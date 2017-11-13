@@ -15,7 +15,7 @@ import java.util.Scanner;
  */
 public class Helper {
 
-    public static boolean numberValidation(String input) {
+    public boolean numberValidation(String input) {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
@@ -25,12 +25,13 @@ public class Helper {
     }
     
     public static void main(String[] args) {
+        Helper helper = new Helper();
         Scanner in = new Scanner(System.in);
         System.out.print("Enter in a number: ");
         String x = in.nextLine();
-        numberValidation(x);
+        helper.numberValidation(x);
         
-        while (numberValidation(x) == false) {
+        while (helper.numberValidation(x) == false) {
             System.out.println("Invalid input.");
             System.out.print("Enter in a number: ");
             x = in.nextLine();
