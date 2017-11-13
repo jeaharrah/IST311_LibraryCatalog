@@ -1,7 +1,8 @@
 /**
- * IST 311 - Professor Soby Chacko -- Fall 2017 Team Members: Jennifer A'Harrah,
- * Eric Liang, Sachin Patel, Nadia Rahim Scrum Master: Sachin Patel --- Product
- * Owner: Jennifer A'Harrah Problem #2: Library Catalog
+ * IST 311 - Professor Soby Chacko -- Fall 2017 
+ * Team Members: Jennifer A'Harrah, Eric Liang, Sachin Patel
+ * Scrum Master: Sachin Patel --- Product Owner: Jennifer A'Harrah 
+ * Problem #2: Library Catalog
  */
 package ist311_librarycatalog;
 
@@ -15,7 +16,6 @@ package ist311_librarycatalog;
 public class Book {
 
     // Declare private fields needed when creating a book object
-
     private String _ISBN;
     private String _title;
     private String _author;
@@ -71,28 +71,46 @@ public class Book {
     }
 
     //=================METHODS==============
+    
+    // Method that gets the availability of a book depending on the boolean value
+    // Alternative solution to the current method provided (boolean isBorrowed())
+    // that performs the same function
+    public String getAvailability() {
+        String availability = "";
+
+        if (this._borrowed == true) {
+            availability = "This book is currently unavailable";
+        } else if (this._borrowed == false) {
+            availability = "This book is available";
+        }
+
+        return availability;
+    }
+    
     // will mark a book as borrowed
     public void borrowed() {
         _borrowed = true;
     }
 
     // will mark a book as returned
-
     public void returned() {
         _borrowed = false;
     }
 
     // will check if a book has been borrowed
     // true if yes, false if it is not
-
     private boolean isBorrowed() {
-        if (_borrowed = true) {
+        boolean isBorrowed = false;
+
+        if (_borrowed == true) {
             System.out.println("Book is borrowed.");
-            return true;
-        } else {
+            isBorrowed = false;
+        } else if (_borrowed == false) {
             System.out.println("Book is not borrowed.");
-            return false;
+            isBorrowed = false;
         }
+
+        return isBorrowed;
     }
 
 }
