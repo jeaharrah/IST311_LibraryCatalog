@@ -17,10 +17,10 @@ import java.util.List;
  */
 public class Catalog {
 
-    private Book book1 = new Book("978-0-44845-714-7", "The Little Engine That Could", "Watty Piper", "Children's Literature");
-    private Book book2 = new Book("978-1-41699-644-6", "Sent", "Margaret Peterson Haddix", "Historical Fiction");
-    private Book book3 = new Book("ISBN", "Book 3", "Author", "Genre");
-    private Book book4 = new Book("ISBN", "Book 4", "Author", "Genre");
+    private Book book1 = new Book("978-0-44845-714-7", "The Little Engine That Could", "Piper, Watty", "Children's Literature");
+    private Book book2 = new Book("978-1-41699-644-6", "Sent", "Haddix, Margaret Peterson", "Historical Fiction");
+    private Book book3 = new Book("978-0-34533-970-6", "The Fellowship of the Ring", "Tolkien, J.R.R.", "Fantasy");
+    private Book book4 = new Book("978-0-48628-211-4", "Frankenstein", "Shelley, Mary", "Fiction", "Gothic Fiction", "Science Fiction");
 
     List<Book> books = new ArrayList<Book>() {
         {
