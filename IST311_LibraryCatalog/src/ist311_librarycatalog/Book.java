@@ -8,33 +8,35 @@ package ist311_librarycatalog;
 /**
  * This class will contain fields and methods for book objects that will go in
  * the catalog.
- * 
+ *
  * @author Eric Liang <eql5121@psu.edu>
  * @author Jennifer A'Harrah <jka5240@psu.edu>
  */
 public class Book {
+
     // Declare private fields needed when creating a book object
+
     private String _ISBN;
     private String _title;
     private String _author;
     private String _genre;
+    private boolean _borrowed;
 
     // Constructor for easily creating new book objects
-    Book (String ISBN, String title, String author, String genre) {
+    Book(String ISBN, String title, String author, String genre) {
         _ISBN = ISBN;
         _title = title;
         _author = author;
         _genre = genre;
-        
-    }
-    
-    /*
-    ===========GETTERS AND SETTERS==================
-    */
-    Book () {
-        
+
     }
 
+    /*
+     ===========GETTERS AND SETTERS==================
+     */
+    Book() {
+
+    }
 
     public String getISBN() {
         return _ISBN;
@@ -66,26 +68,31 @@ public class Book {
 
     public void setGenre(String genre) {
         _genre = genre;
-    } 
-    
+    }
+
     //=================METHODS==============
     // will mark a book as borrowed
-    public void borrowed(){
-        //implemented method here
+    public void borrowed() {
+        _borrowed = true;
     }
+
     // will mark a book as returned
-    public void returned(){
-        //implemented method here
+
+    public void returned() {
+        _borrowed = false;
     }
+
     // will check if a book has been borrowed
     // true if yes, false if it is not
-    private boolean isBorrowed(){
-        //implemented method here
-        
-        
-        // Return 'true' for now so that code will compile (return type required)
-        return true;
+
+    private boolean isBorrowed() {
+        if (_borrowed = true) {
+            System.out.println("Book is borrowed.");
+            return true;
+        } else {
+            System.out.println("Book is not borrowed.");
+            return false;
+        }
     }
-    
-    
+
 }
