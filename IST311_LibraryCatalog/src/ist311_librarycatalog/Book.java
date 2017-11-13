@@ -1,7 +1,7 @@
 /**
- * IST 311 - Professor Soby Chacko -- Fall 2017 
+ * IST 311 - Professor Soby Chacko -- Fall 2017
  * Team Members: Jennifer A'Harrah, Eric Liang, Sachin Patel
- * Scrum Master: Sachin Patel --- Product Owner: Jennifer A'Harrah 
+ * Scrum Master: Sachin Patel --- Product Owner: Jennifer A'Harrah
  * Problem #2: Library Catalog
  */
 package ist311_librarycatalog;
@@ -20,9 +20,12 @@ public class Book {
     private String _title;
     private String _author;
     private String _genre;
+    private String _genre2;
+    private String _genre3;
     private boolean _borrowed;
 
-    // Constructor for easily creating new book objects
+    // Constructors for easily creating new book objects
+    // Constructor for book object with one genre
     Book(String ISBN, String title, String author, String genre) {
         _ISBN = ISBN;
         _title = title;
@@ -31,12 +34,30 @@ public class Book {
 
     }
 
+    // Use method overloading in this constructor for creating a book object 
+    // with two genres
+    Book(String ISBN, String title, String author, String genre, String genre2) {
+        _ISBN = ISBN;
+        _title = title;
+        _author = author;
+        _genre = genre;
+        _genre2 = genre2;
+    }
+
+    // Use method overloading in this constructor for creating a book object 
+    // with three genres
+    Book(String ISBN, String title, String author, String genre, String genre2, String genre3) {
+        _ISBN = ISBN;
+        _title = title;
+        _author = author;
+        _genre = genre;
+        _genre2 = genre2;
+        _genre3 = genre3;
+    }
+
     /*
      ===========GETTERS AND SETTERS==================
      */
-    Book() {
-
-    }
 
     public String getISBN() {
         return _ISBN;
@@ -71,7 +92,6 @@ public class Book {
     }
 
     //=================METHODS==============
-    
     // Method that gets the availability of a book depending on the boolean value
     // Alternative solution to the current method provided (boolean isBorrowed())
     // that performs the same function
@@ -79,14 +99,14 @@ public class Book {
         String availability = "";
 
         if (this._borrowed == true) {
-            availability = "This book is currently unavailable";
+            availability = "Sorry! This book is currently unavailable.";
         } else if (this._borrowed == false) {
-            availability = "This book is available";
+            availability = "This book is available!";
         }
 
         return availability;
     }
-    
+
     // will mark a book as borrowed
     public void borrowed() {
         _borrowed = true;
