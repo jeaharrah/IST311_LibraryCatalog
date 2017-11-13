@@ -1,7 +1,7 @@
 /**
- * IST 311 - Professor Soby Chacko -- Fall 2017 
+ * IST 311 - Professor Soby Chacko -- Fall 2017
  * Team Members: Jennifer A'Harrah, Eric Liang, Sachin Patel
- * Scrum Master: Sachin Patel --- Product Owner: Jennifer A'Harrah 
+ * Scrum Master: Sachin Patel --- Product Owner: Jennifer A'Harrah
  * Problem #2: Library Catalog
  */
 package ist311_librarycatalog;
@@ -15,25 +15,64 @@ import java.util.Scanner;
  */
 public class Helper {
 
-    public static boolean numberValidation(String input) {
-        try {
-            Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            return false;
-        }
-        return true;
-    }
-    
-    public static void main(String[] args) {
+    // Method that reads user input from the keyboard and continues prompting
+    // the user until a valid number is entered
+    public static int numberValidation() {
         Scanner in = new Scanner(System.in);
-        System.out.print("Enter in a number: ");
-        String x = in.nextLine();
-        numberValidation(x);
-        
-        while (numberValidation(x) == false) {
-            System.out.println("Invalid input.");
-            System.out.print("Enter in a number: ");
-            x = in.nextLine();
-        }
+        int number = 0;
+        boolean validNum = false;
+        String input = "";
+
+        do {
+            System.out.print("Enter a number: ");
+            input = in.nextLine();
+
+            try {
+                number = Integer.parseInt(input);
+                validNum = true;
+            } catch (NumberFormatException e) {
+                System.out.println("ERROR: Invalid input");
+            }
+
+        } while (validNum != true);
+
+        System.out.print("You entered: ");
+        return number;
+    }
+
+    // Method that reads user input from the keyboard and validates it to ensure
+    // that the input is not empty or whitespace. This will be used when we
+    // add functionality for the user to search for a book given certain keywords
+    public static String inputNonBlankString() {
+        Scanner keyboard = new Scanner(System.in);
+        String input = "";
+        boolean blankString = false;
+
+        do {
+            System.out.print("Enter a keyword: ");
+            input = keyboard.nextLine();
+
+            if (input.equals("") || input.trim().isEmpty()) {
+                System.out.println("ERROR: Input cannot be empty or whitespace");
+                blankString = true;
+
+            } else {
+                blankString = false;
+            }
+
+        } while (blankString == true);
+
+        System.out.print("You searched: ");
+        return input;
+    }
+
+    public static void main(String[] args) {
+        // Test the numberValidation() and inputNonBlankString() methods
+        // Use a println when calling these to ensure that the return value
+        // is outputted to the screen
+        // (May remove return values in future if we feel they are unnecessary)
+        System.out.println(numberValidation());
+        System.out.println(inputNonBlankString());
+
     }
 }
