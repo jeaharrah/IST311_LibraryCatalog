@@ -59,42 +59,113 @@ public class Book {
      ===========GETTERS AND SETTERS==================
      */
 
+    /**
+     *
+     * @return
+     */
+
+
     public String getISBN() {
         return _ISBN;
     }
 
+    /**
+     *
+     * @param ISBN
+     */
     public void setISBN(String ISBN) {
         _ISBN = ISBN;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTitle() {
         return _title;
     }
 
+    /**
+     *
+     * @param title
+     */
     public void setTitle(String title) {
         _title = title;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getAuthor() {
         return this._author;
     }
 
+    /**
+     *
+     * @param author
+     */
     public void setAuthor(String author) {
         _author = author;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getGenre() {
         return _genre;
     }
 
+    /**
+     *
+     * @param genre
+     */
     public void setGenre(String genre) {
         _genre = genre;
     }
 
+    /**
+     *
+     * @return
+     */
+    public String getGenre2() {
+        return _genre2;
+    }
+
+    /**
+     *
+     * @param genre2
+     */
+    public void setGenre2(String genre2) {
+        _genre2 = genre2;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getGenre3() {
+        return _genre3;
+    }
+
+    /**
+     *
+     * @param genre3
+     */
+    public void setGenre3(String genre3) {
+        _genre3 = genre3;
+    }
+    
     //=================METHODS==============
     // Method that gets the availability of a book depending on the boolean value
     // Alternative solution to the current method provided (boolean isBorrowed())
     // that performs the same function
+
+    /**
+     *
+     * @return
+     */
     public String getAvailability() {
         String availability = "";
 
@@ -108,11 +179,19 @@ public class Book {
     }
 
     // will mark a book as borrowed
+
+    /**
+     *
+     */
     public void borrowed() {
         _borrowed = true;
     }
 
     // will mark a book as returned
+
+    /**
+     *
+     */
     public void returned() {
         _borrowed = false;
     }
