@@ -17,6 +17,11 @@ public class Helper {
 
     // Method that reads user input from the keyboard and continues prompting
     // the user until a valid number is entered
+
+    /**
+     *
+     * @return
+     */
     public static int numberValidation() {
         Scanner in = new Scanner(System.in);
         int number = 0;
@@ -43,6 +48,11 @@ public class Helper {
     // Method that reads user input from the keyboard and validates it to ensure
     // that the input is not empty or whitespace. This will be used when we
     // add functionality for the user to search for a book given certain keywords
+
+    /**
+     *
+     * @return
+     */
     public static String inputNonBlankString() {
         Scanner keyboard = new Scanner(System.in);
         String input = "";
@@ -66,6 +76,10 @@ public class Helper {
         return input;
     }
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         // Test the numberValidation() and inputNonBlankString() methods
         // Use a println when calling these to ensure that the return value
