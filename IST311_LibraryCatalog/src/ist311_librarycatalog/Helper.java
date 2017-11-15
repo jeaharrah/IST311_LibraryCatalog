@@ -20,14 +20,14 @@ public class Helper {
 
     /**
      *
-     * @return
+     * @return the valid inputted integer
      */
     public static int numberValidation() {
         Scanner in = new Scanner(System.in);
         int number = 0;
         boolean validNum = false;
         String input = "";
-
+        
         do {
             System.out.print("Enter a number: ");
             input = in.nextLine();
@@ -51,7 +51,7 @@ public class Helper {
 
     /**
      *
-     * @return
+     * @return the valid inputted string
      */
     public static String inputNonBlankString() {
         Scanner keyboard = new Scanner(System.in);

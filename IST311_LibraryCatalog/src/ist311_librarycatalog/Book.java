@@ -79,7 +79,7 @@ public class Book {
 
     /**
      *
-     * @return
+     * @return the private title field
      */
     public String getTitle() {
         return _title;
@@ -95,7 +95,7 @@ public class Book {
 
     /**
      *
-     * @return
+     * @return the private author field
      */
     public String getAuthor() {
         return this._author;
@@ -111,7 +111,7 @@ public class Book {
 
     /**
      *
-     * @return
+     * @return the private genre string
      */
     public String getGenre() {
         return _genre;
@@ -127,7 +127,7 @@ public class Book {
 
     /**
      *
-     * @return
+     * @return the string of the second book genre descriptor
      */
     public String getGenre2() {
         return _genre2;
@@ -143,7 +143,7 @@ public class Book {
 
     /**
      *
-     * @return
+     * @return the string of the third book genre descriptor
      */
     public String getGenre3() {
         return _genre3;
@@ -164,7 +164,7 @@ public class Book {
 
     /**
      *
-     * @return
+     * @return the string message that displays whether the book is available
      */
     public String getAvailability() {
         String availability = "";
@@ -178,26 +178,29 @@ public class Book {
         return availability;
     }
 
-    // will mark a book as borrowed
+    // 
 
     /**
-     *
+     * Will mark a book as borrowed
      */
     public void borrowed() {
         _borrowed = true;
     }
 
-    // will mark a book as returned
+    // w
 
     /**
-     *
+     * Will mark a book as returned
      */
     public void returned() {
         _borrowed = false;
     }
-
-    // will check if a book has been borrowed
-    // true if yes, false if it is not
+    
+    /**
+     * Method to check if a book has been borrowed
+     * @return the boolean of whether the book is currently borrowed
+     * (true if it is, false if not)
+     */
     private boolean isBorrowed() {
         boolean isBorrowed = false;
 
