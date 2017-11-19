@@ -18,25 +18,24 @@ public class Menu {
 
     public static void main(String[] args) {
         // Created new instance of the class to test method, as per instructions
-        Menu mainMenu = new Menu("Wheel of Fortune");
+        Menu mainMenu = new Menu("LIBRARY");
 
-        MenuChoice spinWheel = mainMenu.addChoice("Spin the wheel");
-        MenuChoice buyVowel = mainMenu.addChoice("Buy a vowel");
-        MenuChoice solvePuzzle = mainMenu.addChoice("Solve the puzzle");
+        MenuChoice viewCatalog = mainMenu.addChoice("View Catalog");
+        MenuChoice search = mainMenu.addChoice("Search");
+        MenuChoice returnBook = mainMenu.addChoice("Return");
         MenuChoice help = mainMenu.addChoice("Help");
         MenuChoice quit = mainMenu.addChoice("Quit");
-
-        while (true) {
-            mainMenu.chooseFromMenu();
-        }
+        
+        mainMenu.getMenuTitle();
+        mainMenu.chooseFromMenu();
 
     }
 
     // enumerate to hold the values of the menu in a dynamic way
     enum MenuChoices {
-        SPIN,
-        BUY,
-        SOLVE,
+        VIEW_CATALOG,
+        SEARCH,
+        RETURN,
         HELP,
         QUIT
     }
@@ -95,17 +94,20 @@ public class Menu {
         boolean validRange = false;
         boolean continueRunning = true;
         MenuChoice menuChoice = null;
-        
-        displayMenuChoices();
-        System.out.println("");
-        int num = Helper.numberValidation();
+        int num = 0;
 
-        menuChoice = _choices.get(num - 1);
-        MenuChoices choice = MenuChoices.values()[num - 1];
+        do {
+            displayMenuChoices();
+            System.out.println("");
+            num = Helper.numberValidation();
 
-        System.out.println("You chose: " + choice.toString());
-        System.out.println("");
-        
+            menuChoice = _choices.get(num - 1);
+            MenuChoices choice = MenuChoices.values()[num - 1];
+
+            System.out.println("You chose: " + choice.toString());
+            System.out.println("");
+        } while (num != MenuChoices.QUIT.ordinal() + 1);
+
         return menuChoice;
     }
 }
