@@ -61,10 +61,8 @@ public class Book {
 
     /**
      *
-     * @return
+     * @return the private ISBN string
      */
-
-
     public String getISBN() {
         return _ISBN;
     }
@@ -158,15 +156,26 @@ public class Book {
     }
     
     //=================METHODS==============
-    // Method that gets the availability of a book depending on the boolean value
-    // Alternative solution to the current method provided (boolean isBorrowed())
-    // that performs the same function
+    
+    /**
+     * Will mark a book as borrowed
+     */
+    public void borrowed() {
+        this._borrowed = true;
+    }
 
     /**
-     *
+     * Will mark a book as returned
+     */
+    public void returned() {
+        this._borrowed = false;
+    }
+    
+    /**
+     * Method to check if a book has been borrowed
      * @return the string message that displays whether the book is available
      */
-    public String getAvailability() {
+    public String isBorrowed() {
         String availability = "";
 
         if (this._borrowed == true) {
@@ -174,45 +183,8 @@ public class Book {
         } else if (this._borrowed == false) {
             availability = "This book is available!";
         }
-
+        
         return availability;
-    }
-
-    // 
-
-    /**
-     * Will mark a book as borrowed
-     */
-    public void borrowed() {
-        _borrowed = true;
-    }
-
-    // w
-
-    /**
-     * Will mark a book as returned
-     */
-    public void returned() {
-        _borrowed = false;
-    }
-    
-    /**
-     * Method to check if a book has been borrowed
-     * @return the boolean of whether the book is currently borrowed
-     * (true if it is, false if not)
-     */
-    private boolean isBorrowed() {
-        boolean isBorrowed = false;
-
-        if (_borrowed == true) {
-            System.out.println("Book is borrowed.");
-            isBorrowed = false;
-        } else if (_borrowed == false) {
-            System.out.println("Book is not borrowed.");
-            isBorrowed = false;
-        }
-
-        return isBorrowed;
     }
 
 }
