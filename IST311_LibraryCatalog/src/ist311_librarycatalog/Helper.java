@@ -41,7 +41,6 @@ public class Helper {
 
         } while (validNum != true);
 
-        System.out.print("You entered: ");
         return number;
     }
 
@@ -72,7 +71,6 @@ public class Helper {
 
         } while (blankString == true);
 
-        System.out.print("You searched: ");
         return input;
     }
 
