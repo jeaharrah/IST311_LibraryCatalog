@@ -1,7 +1,7 @@
 /**
- * IST 311 - Professor Soby Chacko -- Fall 2017 
+ * IST 311 - Professor Soby Chacko -- Fall 2017
  * Team Members: Jennifer A'Harrah, Eric Liang, Sachin Patel
- * Scrum Master: Sachin Patel --- Product Owner: Jennifer A'Harrah 
+ * Scrum Master: Sachin Patel --- Product Owner: Jennifer A'Harrah
  * Problem #2: Library Catalog
  */
 package ist311_librarycatalog;
@@ -15,7 +15,8 @@ import java.util.Scanner;
  * @author Jennifer A'Harrah <jka5240@psu.edu>
  */
 public class Menu {
-        public static void main(String[] args) {
+
+    public static void main(String[] args) {
         // Created new instance of the class to test method, as per instructions
         Menu mainMenu = new Menu("Wheel of Fortune");
 
@@ -91,47 +92,20 @@ public class Menu {
 
     // method that allows the user to make a choice from the list of menu options
     MenuChoice chooseFromMenu() {
-        boolean validNum = false;
         boolean validRange = false;
         boolean continueRunning = true;
-        int numberChoice = 0;
         MenuChoice menuChoice = null;
-
-        Scanner keyboard = new Scanner(System.in);
-
-        displayMenuChoices();
-
-        do {
-            System.out.println("");
-            System.out.print("Enter choice: ");
-            String input = keyboard.nextLine();
-            // Dealing with invalid input
-            try {
-                numberChoice = Integer.parseInt(input);
-                validNum = true;
-            } catch (Exception e) {
-                System.out.println("ERROR: Please enter a number");
-            }
-            if (validNum == true && numberChoice >= 1) {
-                validRange = true;
-            } // Dealing with entry that is out of range
-            else if ((validNum == true) && (numberChoice < 1)) {
-                System.out.print("ERROR: Please enter a number between ");
-                System.out.println("1 and ");
-            }
-            // Continue looping while the input is either non-numeric or
-            // out of range of the menu choice items
-        } while (validNum != true || validRange != true);
-
-        menuChoice = _choices.get(numberChoice - 1);
-        MenuChoices choice = MenuChoices.values()[numberChoice - 1];
-        System.out.println();
         
-        switch(choice) {
-            
-            
-        }
+        displayMenuChoices();
+        System.out.println("");
+        int num = Helper.numberValidation();
 
+        menuChoice = _choices.get(num - 1);
+        MenuChoices choice = MenuChoices.values()[num - 1];
+
+        System.out.println("You chose: " + choice.toString());
+        System.out.println("");
+        
         return menuChoice;
     }
 }
