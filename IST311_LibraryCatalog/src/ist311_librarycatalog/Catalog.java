@@ -16,26 +16,30 @@ import java.util.List;
  * @author Jennifer A'Harrah <jka5240@psu.edu>
  */
 public class Catalog {
-
-    private Book book1 = new Book("978-0-44845-714-7", "The Little Engine That Could", "Piper, Watty", "Children's Literature");
-    private Book book2 = new Book("978-1-41699-644-6", "Sent", "Haddix, Margaret Peterson", "Historical Fiction");
-    private Book book3 = new Book("978-0-34533-970-6", "The Fellowship of the Ring", "Tolkien, J.R.R.", "Fantasy", "Adventure");
-    private Book book4 = new Book("978-0-48628-211-4", "Frankenstein", "Shelley, Mary", "Fiction", "Gothic Fiction", "Science Fiction");
-    private Book book5 = new Book("978-0-06207-348-8", "And Then There Were None", "Christie, Agatha", "Mystery");
+    // Instantiate some private book objects
+    private Book _book1 = new Book("978-0-44845-714-7", "The Little Engine That Could", "Piper, Watty", "Children's Literature");
+    private Book _book2 = new Book("978-1-41699-644-6", "Sent", "Haddix, Margaret Peterson", "Historical Fiction");
+    private Book _book3 = new Book("978-0-34533-970-6", "The Fellowship of the Ring", "Tolkien, J.R.R.", "Fantasy", "Adventure");
+    private Book _book4 = new Book("978-0-48628-211-4", "Frankenstein", "Shelley, Mary", "Fiction", "Gothic Fiction", "Science Fiction");
+    private Book _book5 = new Book("978-0-06207-348-8", "And Then There Were None", "Christie, Agatha", "Mystery");
     
-    
+    // Create an arraylist that stores Book objects
+    // Add each book to the arraylist
     List<Book> books = new ArrayList<Book>() {
         {
-            add(book1);
-            add(book2);
-            add(book3);
-            add(book4);
-            add(book5);
+            add(_book1);
+            add(_book2);
+            add(_book3);
+            add(_book4);
+            add(_book5);
 
         }
     };
     
     /**
+     * Method for displaying each book object with its various attributes.
+     * Contains if-else logic for dealing with any book object that has more
+     * than one genre.
      * @author Jennifer A'Harrah <jka5240@psu.edu>
      */
     public void displayBooks() {
