@@ -19,15 +19,7 @@ public class LibraryCatalog_MAIN {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        Book book1 = new Book("9780-4484-57147", "The Little Engine That Could", "Watty Piper", "Children's Literature");
-        System.out.println(book1.getTitle());
-        System.out.println(book1.getAuthor());
-        System.out.println(book1.getISBN());
-        System.out.println(book1.getGenre());
         
-        Catalog catalog = new Catalog();
-        catalog.displayBooks();
         
     }
     
