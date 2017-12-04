@@ -270,7 +270,7 @@ public class Book implements Comparable<Book> {
 
         public int compare(Book book1, Book book2) {
             String bookGenre1 = book1.getGenre().toUpperCase();
-            String bookGenre2 = book2.getGenre2().toUpperCase();
+            String bookGenre2 = book2.getGenre().toUpperCase();
 
             //ascending order
             return bookGenre1.compareTo(bookGenre2);
@@ -296,7 +296,8 @@ public class Book implements Comparable<Book> {
         catalog.displayBooks();
         //catalog.getBooks().sort(BookNameComparator);
         //catalog.getBooks().sort(BookISBNComparator);
-        catalog.getBooks().sort(BookAuthorComparator);
+        //catalog.getBooks().sort(BookAuthorComparator);
+        catalog.getBooks().sort(BookGenreComparator);
 
         System.out.println("==================After sort==================");
         catalog.displayBooks();
