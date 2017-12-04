@@ -160,10 +160,18 @@ public class Book implements Comparable<Book> {
         _genre3 = genre3;
     }
 
+    /**
+     *
+     * @return the number of books avaliable
+     */
     public int getNumOfBooks() {
         return _numOfBooks;
     }
 
+    /**
+     *
+     * @param _numOfBooks
+     */
     public void setNumOfBooks(int _numOfBooks) {
         this._numOfBooks = _numOfBooks;
     }
@@ -199,7 +207,11 @@ public class Book implements Comparable<Book> {
 
         return availability;
     }
+
     // ======= Sorting methods =========
+    // PBI-6: 
+    // Sorting for book name
+    // not implemented: book isbn, author, genre, etc.
     @Override
     public int compareTo(Book compareBook) {
         int compareNumbers = ((Book) compareBook).getNumOfBooks();
@@ -211,6 +223,9 @@ public class Book implements Comparable<Book> {
         //return comapreNumbers - this._numOfBooks;
     }
 
+    /**
+     * compares and sorts by book title.
+     */
     public static Comparator<Book> BookNameComparator = new Comparator<Book>() {
         public int compare(Book book1, Book book2) {
             String bookName1 = book1.getTitle().toUpperCase();
@@ -223,23 +238,72 @@ public class Book implements Comparable<Book> {
             // bookName2.compareTo(bookName1);
         }
     };
-    // PBI-6: 
-    // Sorting for book name
-    // not implemented: book isbn, author, genre, etc.
+    // sorts by ISBN
+    public static Comparator<Book> BookISBNComparator = new Comparator<Book>() {
+
+        public int compare(Book book1, Book book2) {
+            String bookISBN1 = book1.getISBN().toUpperCase();
+            String bookISBN2 = book2.getISBN().toUpperCase();
+
+            //ascending order
+            return bookISBN1.compareTo(bookISBN2);
+
+            //descending order
+            // return bookISBN2.compareTo(bookISBN1);
+        }
+    };
+    // sorts alphabaetically by last name of Author
+    public static Comparator<Book> BookAuthorComparator = new Comparator<Book>() {
+
+        public int compare(Book book1, Book book2) {
+            String bookAuthor1 = book1.getAuthor().toUpperCase();
+            String bookAuthor2 = book2.getAuthor().toUpperCase();
+
+            //ascending order
+            return bookAuthor1.compareTo(bookAuthor2);
+
+            //descending order
+            //return bookAuthor2.compareTo(bookAuthor1);
+        }
+    };
+    public static Comparator<Book> BookGenreComparator = new Comparator<Book>() {
+
+        public int compare(Book book1, Book book2) {
+            String bookGenre1 = book1.getGenre().toUpperCase();
+            String bookGenre2 = book2.getGenre2().toUpperCase();
+
+            //ascending order
+            return bookGenre1.compareTo(bookGenre2);
+
+            //descending order
+            //return bookGenre2.compareTo(bookGenre1);
+        }
+    };
+
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         Catalog catalog = new Catalog();
         List<Book> books = new ArrayList<>(catalog.getBooks());
-        
-        
+
+        // test case of book sorting by name
+        /*
         for (Book book : books) {
             System.out.println(book.getTitle());
-        }
+        }*/
+        catalog.displayBooks();
+        //catalog.getBooks().sort(BookNameComparator);
+        //catalog.getBooks().sort(BookISBNComparator);
+        catalog.getBooks().sort(BookAuthorComparator);
 
-        books.sort(BookNameComparator);
-        System.out.println("====After====");
+        System.out.println("==================After sort==================");
+        catalog.displayBooks();
+
+        /*
         for (Book book : books) {
             System.out.println(book.getTitle());
-        }
-
+        }*/
     }
 }
