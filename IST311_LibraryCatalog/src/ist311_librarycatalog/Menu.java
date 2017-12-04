@@ -28,7 +28,7 @@ public class Menu {
         
         mainMenu.getMenuTitle();
         mainMenu.chooseFromMenu();
-
+        
     }
 
     // enumerate to hold the values of the menu in a dynamic way
