@@ -58,7 +58,7 @@ public class Helper {
         boolean blankString = false;
 
         do {
-            System.out.print("Enter a keyword: ");
+            System.out.print("Enter input: ");
             input = keyboard.nextLine();
 
             if (input.equals("") || input.trim().isEmpty()) {
