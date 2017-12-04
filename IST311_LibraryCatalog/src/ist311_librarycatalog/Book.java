@@ -294,10 +294,10 @@ public class Book implements Comparable<Book> {
             System.out.println(book.getTitle());
         }*/
         catalog.displayBooks();
-        //catalog.getBooks().sort(BookNameComparator);
+        catalog.getBooks().sort(BookNameComparator);
         //catalog.getBooks().sort(BookISBNComparator);
         //catalog.getBooks().sort(BookAuthorComparator);
-        catalog.getBooks().sort(BookGenreComparator);
+        //catalog.getBooks().sort(BookGenreComparator);
 
         System.out.println("==================After sort==================");
         catalog.displayBooks();
