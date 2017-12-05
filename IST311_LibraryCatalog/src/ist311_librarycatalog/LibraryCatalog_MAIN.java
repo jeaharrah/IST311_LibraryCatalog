@@ -42,8 +42,8 @@ public class LibraryCatalog_MAIN {
          * Menu Choice items for Catalog menu
          */
         MenuChoice displayBooks = catalogMenu.addChoice("Display Books");
-        MenuChoice selectBook = catalogMenu.addChoice("Select Book for Checkout");
         MenuChoice sortChoice = catalogMenu.addChoice("Sort books by attribute");
+        MenuChoice selectBook = catalogMenu.addChoice("Select Book for Checkout");
         /**
          * Menu Choice items for Sort menu
          */
@@ -77,11 +77,9 @@ public class LibraryCatalog_MAIN {
         returnToMain = helpMenu.addChoice("Return to Main Menu");
         
         MenuChoice chosen = mainMenu.chooseFromMenu();
-        /*
-        if (chosen = choiceViewCatalog) {
-
-        }
-         */
+        
+        
+        
     }
 
 }
