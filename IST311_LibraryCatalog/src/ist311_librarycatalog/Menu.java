@@ -60,7 +60,7 @@ public class Menu {
 
     // Displays only the menu title
     public void getMenuTitle() {
-        System.out.println("-= " + _title + " =-");
+        System.out.println("== " + _title.toUpperCase() + " ==");
     }
 
     // method that returns the chocice made by the user
@@ -72,7 +72,7 @@ public class Menu {
 
     // method that displays the menu and shows what choices are available
     void displayMenu() {
-        System.out.println("-= " + _title + " =-");
+        System.out.println("== " + _title.toUpperCase() + " ==");
         int num = 1;
         for (MenuChoice choice : _choices) {
             System.out.println(num + ") " + choice.getText());
