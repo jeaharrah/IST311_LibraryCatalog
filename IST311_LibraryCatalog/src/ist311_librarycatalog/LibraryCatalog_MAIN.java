@@ -37,7 +37,7 @@ public class LibraryCatalog_MAIN {
         MenuChoice choiceReturnBook = mainMenu.addChoice("Return");
         MenuChoice choiceHelp = mainMenu.addChoice("Help");
         MenuChoice choiceQuit = mainMenu.addChoice("Quit");
-        mainMenu.getMenuTitle();
+
         /**
          * Menu Choice items for Catalog menu
          */
@@ -75,11 +75,37 @@ public class LibraryCatalog_MAIN {
         returnToMain = borrowMenu.addChoice("Return to Main Menu");
         returnToMain = returnMenu.addChoice("Return to Main Menu");
         returnToMain = helpMenu.addChoice("Return to Main Menu");
-        
+
+        boolean finished = false;
+
         MenuChoice chosen = mainMenu.chooseFromMenu();
-        
-        
-        
+
+        do {
+            if (chosen == choiceQuit) {
+                System.out.println("Thanks for visiting!");
+                finished = true;
+            } else {
+                if (chosen == choiceViewCatalog) {
+                    System.out.println("You've chosen to view the catalog!");
+                    MenuChoice choice = catalogMenu.chooseFromMenu();
+                }
+                if (chosen == choiceSearch) {
+                    System.out.println("You've chosen to search the catalog!");
+                    MenuChoice choice = searchMenu.chooseFromMenu();
+                }
+                if (chosen == choiceReturnBook) {
+                    System.out.println("You've chosen to return materials!");
+                    MenuChoice choice = null;
+                    do {
+                        choice = returnMenu.chooseFromMenu();
+
+                        if (choice == returnToMain) {
+                            System.out.println("Made it to main");
+                        }
+                    } while (choice != returnToMain);
+                }
+            }
+        } while (finished != true);
     }
 
 }
