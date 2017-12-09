@@ -25,10 +25,10 @@ public class Menu {
         MenuChoice returnBook = mainMenu.addChoice("Return");
         MenuChoice help = mainMenu.addChoice("Help");
         MenuChoice quit = mainMenu.addChoice("Quit");
-        
+
         mainMenu.getMenuTitle();
         mainMenu.chooseFromMenu();
-        
+
     }
 
     // enumerate to hold the values of the menu in a dynamic way
@@ -91,15 +91,27 @@ public class Menu {
 
     // method that allows the user to make a choice from the list of menu options
     MenuChoice chooseFromMenu() {
-        boolean validRange = false;
-        boolean continueRunning = true;
+        boolean validRange = true;
         MenuChoice menuChoice = null;
         int num = 0;
-
+        
         do {
             displayMenuChoices();
             System.out.println("");
-            num = Helper.numberValidation();
+
+            do {
+                num = Helper.numberValidation();
+                if (num <= 0 || num > MenuChoices.values().length) {
+                    validRange = false;
+                    System.out.println("ERROR: Please enter a number between "
+                            + (MenuChoices.VIEW_CATALOG.ordinal() + 1) + " and "
+                            + (MenuChoices.QUIT.ordinal() + 1));
+                }
+                else {
+                    validRange = true;
+                }
+
+            } while (validRange != true);
 
             menuChoice = _choices.get(num - 1);
             MenuChoices choice = MenuChoices.values()[num - 1];
