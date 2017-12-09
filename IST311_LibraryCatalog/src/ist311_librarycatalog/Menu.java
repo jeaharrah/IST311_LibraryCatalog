@@ -94,31 +94,25 @@ public class Menu {
         boolean validRange = true;
         MenuChoice menuChoice = null;
         int num = 0;
-        
+
+        this.displayMenu();
+        System.out.println("");
+
         do {
-            displayMenuChoices();
-            System.out.println("");
+            num = Helper.numberValidation();
+            if (num <= 0 || num > _choices.size()) {
+                validRange = false;
+                System.out.println("ERROR: Please enter a number between 1 and "
+                        + _choices.size());
+            } else {
+                validRange = true;
+            }
 
-            do {
-                num = Helper.numberValidation();
-                if (num <= 0 || num > MenuChoices.values().length) {
-                    validRange = false;
-                    System.out.println("ERROR: Please enter a number between "
-                            + (MenuChoices.VIEW_CATALOG.ordinal() + 1) + " and "
-                            + (MenuChoices.QUIT.ordinal() + 1));
-                }
-                else {
-                    validRange = true;
-                }
-
-            } while (validRange != true);
-
-            menuChoice = _choices.get(num - 1);
-            MenuChoices choice = MenuChoices.values()[num - 1];
-
-            System.out.println("You chose: " + choice.toString());
-            System.out.println("");
-        } while (num != MenuChoices.QUIT.ordinal() + 1);
+        } while (validRange != true);
+        
+        menuChoice = _choices.get(num - 1);
+        System.out.println("You chose: " + menuChoice.getText());
+        System.out.println("");
 
         return menuChoice;
     }
