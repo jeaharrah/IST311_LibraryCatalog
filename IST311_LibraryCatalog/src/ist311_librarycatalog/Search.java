@@ -68,7 +68,7 @@ public class Search {
                 searchedBooks.add(bookList.get(i));
             }
         }
-        if(searchedBooks.size() != 0){
+        if(!searchedBooks.isEmpty()){
             for(Book book: searchedBooks){
                 System.out.println(book.getAuthor());
             }
@@ -88,7 +88,7 @@ public class Search {
                 searchedBooks.add(bookList.get(i));
             }
         }
-        if(searchedBooks.size() != 0){
+        if(!searchedBooks.isEmpty()){
             for(Book book: searchedBooks){
                 System.out.println(book.getISBN());
             }
@@ -108,7 +108,7 @@ public class Search {
                 searchedBooks.add(bookList.get(i));
             }
         }
-        if(searchedBooks.size() != 0){
+        if(!searchedBooks.isEmpty()){
             for(Book book: searchedBooks){
                 System.out.println(book.getGenre());
             }
