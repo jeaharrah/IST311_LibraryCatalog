@@ -297,32 +297,19 @@ public class Book implements Comparable<Book> {
         Catalog catalog = new Catalog();
         Search search = new Search();
         List<Book> books = new ArrayList<>(catalog.getBookList());
-        List<Book> searchedBooks = new ArrayList<>();
-//        System.out.print("Search: ");
-//        String input = in.next();
-        for (int i = 0; i < books.size(); i++) {
-            if (search.searchByBookTitle(books.get(i)) == true){
-                searchedBooks.add(books.get(i));
-            }   
-        }
+
 
         // test case of book sorting by name
-        /*
-        for (Book book : books) {
-            System.out.println(book.getTitle());
-        }*/
-//        catalog.displayBooks();
-//        catalog.getBooks().sort(BookNameComparator);
-//        //catalog.getBooks().sort(BookISBNComparator);
-//        //catalog.getBooks().sort(BookAuthorComparator);
-//        //catalog.getBooks().sort(BookGenreComparator);
-//
-//        System.out.println("==================After sort==================");
-//        catalog.displayBooks();
+        
+        catalog.displayBooks();
+        catalog.getBookList().sort(BookNameComparator);
+//        catalog.getBookList().sort(BookISBNComparator);
+//        catalog.getBookList().sort(BookAuthorComparator);
+//        catalog.getBookList().sort(BookGenreComparator);
 
-        /*
-        for (Book book : books) {
-            System.out.println(book.getTitle());
-        }*/
+        System.out.println("==================After sort==================");
+        catalog.displayBooks();
+
+        
     }
 }
