@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Scanner;
 
 /**
  * This class will contain fields and methods for book objects that will go in
@@ -32,6 +33,10 @@ public class Book implements Comparable<Book> {
 
     // Constructors for easily creating new book objects
     // Constructor for book object with one genre
+    Book() {
+
+    }
+
     Book(String ISBN, String title, String author, String genre) {
         _ISBN = ISBN;
         _title = title;
@@ -227,6 +232,7 @@ public class Book implements Comparable<Book> {
      * compares and sorts by book title.
      */
     public static Comparator<Book> BookNameComparator = new Comparator<Book>() {
+        @Override
         public int compare(Book book1, Book book2) {
             String bookName1 = book1.getTitle().toUpperCase();
             String bookName2 = book2.getTitle().toUpperCase();
@@ -241,6 +247,7 @@ public class Book implements Comparable<Book> {
     // sorts by ISBN
     public static Comparator<Book> BookISBNComparator = new Comparator<Book>() {
 
+        @Override
         public int compare(Book book1, Book book2) {
             String bookISBN1 = book1.getISBN().toUpperCase();
             String bookISBN2 = book2.getISBN().toUpperCase();
@@ -255,6 +262,7 @@ public class Book implements Comparable<Book> {
     // sorts alphabaetically by last name of Author
     public static Comparator<Book> BookAuthorComparator = new Comparator<Book>() {
 
+        @Override
         public int compare(Book book1, Book book2) {
             String bookAuthor1 = book1.getAuthor().toUpperCase();
             String bookAuthor2 = book2.getAuthor().toUpperCase();
@@ -268,6 +276,7 @@ public class Book implements Comparable<Book> {
     };
     public static Comparator<Book> BookGenreComparator = new Comparator<Book>() {
 
+        @Override
         public int compare(Book book1, Book book2) {
             String bookGenre1 = book1.getGenre().toUpperCase();
             String bookGenre2 = book2.getGenre().toUpperCase();
@@ -286,21 +295,30 @@ public class Book implements Comparable<Book> {
      */
     public static void main(String[] args) {
         Catalog catalog = new Catalog();
-        List<Book> books = new ArrayList<>(catalog.getBooks());
+        Search search = new Search();
+        List<Book> books = new ArrayList<>(catalog.getBookList());
+        List<Book> searchedBooks = new ArrayList<>();
+//        System.out.print("Search: ");
+//        String input = in.next();
+        for (int i = 0; i < books.size(); i++) {
+            if (search.searchByBookTitle(books.get(i)) == true){
+                searchedBooks.add(books.get(i));
+            }   
+        }
 
         // test case of book sorting by name
         /*
         for (Book book : books) {
             System.out.println(book.getTitle());
         }*/
-        catalog.displayBooks();
-        catalog.getBooks().sort(BookNameComparator);
-        //catalog.getBooks().sort(BookISBNComparator);
-        //catalog.getBooks().sort(BookAuthorComparator);
-        //catalog.getBooks().sort(BookGenreComparator);
-
-        System.out.println("==================After sort==================");
-        catalog.displayBooks();
+//        catalog.displayBooks();
+//        catalog.getBooks().sort(BookNameComparator);
+//        //catalog.getBooks().sort(BookISBNComparator);
+//        //catalog.getBooks().sort(BookAuthorComparator);
+//        //catalog.getBooks().sort(BookGenreComparator);
+//
+//        System.out.println("==================After sort==================");
+//        catalog.displayBooks();
 
         /*
         for (Book book : books) {

@@ -17,9 +17,10 @@ import java.util.List;
  */
 public class Catalog {
 
-    public List<Book> getBooks() {
+    public List<Book> getBookList() {
         return books;
     }
+    
     // Instantiate some private book objects
     private Book _book1 = new Book("978-0-44845-714-7", "The Little Engine That Could", "Piper, Watty", "Children's Literature");
     private Book _book2 = new Book("978-1-41699-644-6", "Sent", "Haddix, Margaret Peterson", "Historical Fiction");
