@@ -26,7 +26,7 @@ Add more features to your application.
 
 8) As a developer, I want to save the project as a Javadoc, so I can have a usable and structured HTML representation of my project to display.														
 
-9)As a developer, I want to include proper Javadoc comments for all class methods, so that my code looks as professional as possible.														
+9) As a developer, I want to include proper Javadoc comments for all class methods, so that my code looks as professional as possible.														
 
 10) As a developer, I want to sort classes into packages if need be, so my project is more organized.	
 
