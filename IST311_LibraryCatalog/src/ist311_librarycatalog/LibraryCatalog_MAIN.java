@@ -100,15 +100,15 @@ public class LibraryCatalog_MAIN {
         returnToMain = helpMenu.addChoice("Return to Main Menu");
 
         boolean finished = false;
-
         MenuChoice chosen = null;
+        int input = 0;
 
         do {
             chosen = mainMenu.chooseFromMenu();
             if (chosen == choiceQuit) {
                 System.out.println("Thanks for visiting!");
                 finished = true;
-                
+
                 // Else-if block for user wanting to view catalog
             } else if (chosen == choiceViewCatalog) {
                 catalogMenu.getMenuTitle();
@@ -123,7 +123,7 @@ public class LibraryCatalog_MAIN {
                 }
 
                 System.out.println("");
-                int input = Helper.numberValidation();
+                input = Helper.numberValidation();
                 System.out.println("");
 
                 if (input == SearchSortOptions.TITLE.ordinal() + 1) {
@@ -139,9 +139,9 @@ public class LibraryCatalog_MAIN {
                     catalog.getBookList().sort(BookISBNComparator);
                     catalog.displayBooks();
                 } else if (input == SearchSortOptions.values().length + 1) {
-                    mainMenu.chooseFromMenu();
-
+                    
                 }
+                
                 // Else-if block for user wanting to search
             } else if (chosen == choiceSearch) {
                 searchMenu.getMenuTitle();
@@ -158,7 +158,7 @@ public class LibraryCatalog_MAIN {
                 }
 
                 System.out.println("");
-                int input = Helper.numberValidation();
+                input = Helper.numberValidation();
                 System.out.println("");
 
                 if (input == SearchSortOptions.TITLE.ordinal() + 1) {
@@ -169,15 +169,35 @@ public class LibraryCatalog_MAIN {
                     search.searchByGenre(catalog);
                 } else if (input == SearchSortOptions.ISBN.ordinal() + 1) {
                     search.searchByISBN(catalog);
+                } else if (input == SearchSortOptions.values().length + 1) {
+                    mainMenu.chooseFromMenu();
                 }
-                break;
-            }
-            if (chosen == choiceReturnBook) {
+
+            } else if (chosen == choiceReturnBook) {
                 returnMenu.getMenuTitle();
                 System.out.println("Please enter ISBN of book being returned");
-
-                break;
+                
+                
+                
             }
+            
+            else if (chosen == choiceHelp) {
+                helpMenu.getMenuTitle();
+                System.out.println("--INSTRUCTIONS--");
+                
+                System.out.println("MENU HANDLING:");
+                System.out.println("Type the number of the desired menu choice.");
+                System.out.println("Press the 'Enter' key.");
+                System.out.println("");
+                
+                System.out.println("MENU CHOICE OPTION INFORMATION:");
+                System.out.println("'View Catalog' allows you to view and sort the list of books.");
+                System.out.println("'Search' allows you to search for a book by an attribute and check out a book.");
+                System.out.println("'Return' allows you to return a book by entering its ISBN-13 code.");
+                System.out.println("'Quit' allows you to quit the application.");
+                System.out.println("     -------------------------");
+            }
+
         } while (finished != true);
 
     }
