@@ -42,6 +42,7 @@ public class Search {
     }
 
     public Book searchByBookTitle(Catalog catalog) {
+        System.out.println("--SEARCH BY TITLE--");
         List<Book> searchedBooks = new ArrayList<>();
         input = Helper.inputNonBlankString();
 
@@ -63,6 +64,7 @@ public class Search {
     }
 
     public Book searchByAuthor(Catalog catalog) {
+        System.out.println("--SEARCH BY AUTHOR--");
         List<Book> searchedBooks = new ArrayList<>();
         input = Helper.inputNonBlankString();
 
@@ -88,7 +90,7 @@ public class Search {
         System.out.println("--SEARCH BY ISBN-13--");
         System.out.println("NOTE: Enter ISBN-13 code in proper hyphenated notation");
         System.out.println("Format is as follows: 'XXX-X-XXXXX-XXX-X'");
-        
+
         input = Helper.inputNonBlankString();
 
         for (int i = 0; i < bookList.size(); i++) {
@@ -108,6 +110,7 @@ public class Search {
     }
 
     public Book searchByGenre(Catalog catalog) {
+        System.out.println("--SEARCH BY GENRE--");
         List<Book> searchedBooks = new ArrayList<>();
         input = Helper.inputNonBlankString();
 
