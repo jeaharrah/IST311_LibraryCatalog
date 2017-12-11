@@ -6,11 +6,11 @@
  */
 package ist311_librarycatalog;
 
-import static ist311_librarycatalog.Search.bookList;
-import java.util.ArrayList;
-import java.util.List;
+//import static ist311_librarycatalog.Search.bookList;
+//import java.util.ArrayList;
+//import java.util.List;
 import java.util.Scanner;
-import java.util.regex.Pattern;
+//import java.util.regex.Pattern;
 
 /**
  * This class will contain methods that deal with input validation for the user.
@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
  * @author Jennifer A'Harrah <jka5240@psu.edu>
  */
 public class Helper {
-    private Book returnedBook = null;
+    private final Book returnedBook = null;
     
     /**
      * Method that reads user input from the keyboard and continues prompting
@@ -50,8 +50,7 @@ public class Helper {
     /**
      *
      * @param string
-     * @return 
-     * @returns true for valid ISBN, false for invalid ISBN
+     * @return true for valid ISBN, false for invalid ISBN
      */
     public static boolean inputISBN(String string) {
  
@@ -68,6 +67,14 @@ public class Helper {
         }
     }
     
+    /**
+     * Method for adding hyphens between characters in a string
+     * Gives programmer a way to maintain a consistent data format
+     * for the ISBN-13 codes without having to do a challenging task
+     * of entering them in the correct positions him-/herself.
+     * @param string
+     * @return modified ISBN string with hyphens inserted
+     */
     public static String hyphenateISBN(String string) {
         StringBuilder str = new StringBuilder(string);
         str.insert(3, "-");
@@ -79,10 +86,10 @@ public class Helper {
     }
 
     /**
-     *
+     * Method for retrieving string input from user and ensuring that
+     * the user doesn't entire white space or a blank entry
      * @return the valid inputted string
      */
-
     public static String inputNonBlankString() {
         Scanner keyboard = new Scanner(System.in);
         String input = "";
@@ -104,17 +111,4 @@ public class Helper {
         return input;
     }
 
-    /**
-     *
-     * @param args
-     */
-    public static void main(String[] args) {
-        // Test the numberValidation() and inputNonBlankString() methods
-        // Use a println when calling these to ensure that the return value
-        // is outputted to the screen
-        // (May remove return values in future if we feel they are unnecessary)
-        System.out.println(numberValidation());
-        System.out.println(inputNonBlankString());
-
-    }
 }

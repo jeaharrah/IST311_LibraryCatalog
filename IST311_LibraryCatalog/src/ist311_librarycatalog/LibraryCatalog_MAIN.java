@@ -10,7 +10,6 @@ import static ist311_librarycatalog.Book.BookAuthorComparator;
 import static ist311_librarycatalog.Book.BookGenreComparator;
 import static ist311_librarycatalog.Book.BookISBNComparator;
 import static ist311_librarycatalog.Book.BookNameComparator;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,10 +23,18 @@ import java.util.List;
 public class LibraryCatalog_MAIN {
 
     /**
-     * @param args the command line arguments
+     * Instance of Catalog class for use in method calls
      */
     public static Catalog catalog = new Catalog();
+
+    /**
+     * Instance of Search class for use in method calls
+     */
     public static Search search = new Search();
+
+    /**
+     * List object that stores the Book objects from the getBookList() ArrayList
+     */
     public static List<Book> bookList = catalog.getBookList();
 
     enum SearchSortOptions {
@@ -40,7 +47,10 @@ public class LibraryCatalog_MAIN {
     enum ReturnToMain {
         RETURN_TO_MAIN,
     }
-
+    
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
 
         Menu mainMenu = new Menu("Library");
@@ -48,9 +58,6 @@ public class LibraryCatalog_MAIN {
         Menu catalogMenu = new Menu("View Catalog");
         Menu returnMenu = new Menu("Material Return");
         Menu helpMenu = new Menu("Help");
-
-        Menu borrowMenu = new Menu("Check Out A Book");
-        Menu sortMenu = new Menu("Sort");
 
         /**
          * Menu Choice items for Main Menu
