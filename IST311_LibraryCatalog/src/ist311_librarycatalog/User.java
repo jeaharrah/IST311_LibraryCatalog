@@ -23,11 +23,6 @@ public class User {
         String userName = Helper.inputNonBlankString();
         this._userName = userName;
     }
-    
-    public static void main(String[] args) {
-        User user = new User();
-        user.setName();
-        
-    }
+
     
 }
