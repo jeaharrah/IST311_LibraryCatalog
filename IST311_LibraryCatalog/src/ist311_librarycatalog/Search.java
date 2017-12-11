@@ -42,7 +42,23 @@ public class Search {
 
     public Book chooseResult(List<Book> searchedBooks) {
         int choice = Helper.numberValidation();
-        return searchedBooks.get(choice - 1);
+        boolean valid = true;
+        if (choice > searchedBooks.size() || choice <= 0) {
+            valid = true;
+            do {
+                System.out.println("Invalid choice.");
+                choice = Helper.numberValidation();
+            } while (!valid);
+        } else {
+            valid = false;
+        }
+
+        Book book = searchedBooks.get(choice - 1);
+
+        System.out.println("You chose this book.");
+        book.printBook();
+
+        return book;
     }
 
     public void searchByBookTitle(Catalog catalog) {
@@ -62,7 +78,7 @@ public class Search {
                 System.out.println(book.getTitle());
                 i++;
             }
-//            chooseResult(searchedBooks);
+            chooseResult(searchedBooks);
         } else {
             System.out.println("No books found containing the keyword \"" + input + "\" in the title.");
         }

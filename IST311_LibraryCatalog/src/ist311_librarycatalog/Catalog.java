@@ -17,17 +17,21 @@ import java.util.List;
  */
 public class Catalog {
 
+    /**
+     *
+     * @returns a List<Book>
+     */
     public List<Book> getBookList() {
         return books;
     }
 
     // Instantiate some private book objects
-    // 3, 5, 11, 15
-    private Book _book1 = new Book("978-0-44845-714-7", "The Little Engine That Could", "Piper, Watty", "Children's Literature");
-    private Book _book2 = new Book("978-1-41699-644-6", "Sent", "Haddix, Margaret Peterson", "Historical Fiction");
-    private Book _book3 = new Book("978-0-34533-970-6", "The Fellowship of the Ring", "Tolkien, J.R.R.", "Fantasy", "Adventure");
-    private Book _book4 = new Book("978-0-48628-211-4", "Frankenstein", "Shelley, Mary", "Fiction", "Gothic Fiction", "Science Fiction");
-    private Book _book5 = new Book("978-0-06207-348-8", "And Then There Were None", "Christie, Agatha", "Mystery");
+    private Book _book1 = new Book("978-0-44845-714-7", "The Little Engine That Could", "Piper, Watty", "Children's Literature", 5);
+    private Book _book2 = new Book("978-1-41699-644-6", "Sent", "Haddix, Margaret Peterson", "Historical Fiction", 6);
+    private Book _book3 = new Book("978-0-34533-970-6", "The Fellowship of the Ring", "Tolkien, J.R.R.", "Fantasy, Adventure", 3);
+    private Book _book4 = new Book("978-0-48628-211-4", "Frankenstein", "Shelley, Mary", "Fiction, Gothic Fiction, Science Fiction", 5);
+    private Book _book5 = new Book("978-0-06207-348-8", "And Then There Were None", "Christie, Agatha", "Mystery", 4);
+    private Book _book6 = new Book("111-1-11111-111-1", "a", "a, a", "a", 1); // test debug
 
     // Create an arraylist that stores Book objects
     // Add each book to the arraylist
@@ -38,7 +42,7 @@ public class Catalog {
             add(_book3);
             add(_book4);
             add(_book5);
-
+            add(_book6);
         }
     };
 
@@ -58,19 +62,47 @@ public class Catalog {
             System.out.println("Title: " + book.getTitle());
             System.out.println("Author: " + book.getAuthor());
             System.out.println("Genre: " + book.getGenre());
-            if (book.getGenre2() != null) {
-                System.out.println("Genre 2: " + book.getGenre2());
-            }
-            if (book.getGenre3() != null) {
-                System.out.println("Genre 3: " + book.getGenre3());
-            }
+//            if (book.getGenre2() != null) {
+//                System.out.println("Genre 2: " + book.getGenre2());
+//            }
+//            if (book.getGenre3() != null) {
+//                System.out.println("Genre 3: " + book.getGenre3());
+//            }
             System.out.println("ISBN-13: " + book.getISBN());
+            System.out.println("Number of copies left: " + book.getNumOfBooks());
             System.out.println("------------");
 
         }
 
     }
 
+    /**
+     * prevents duplicates or exact copies of books from showing up twice if an
+     * exact copy is added through addBook method
+     *
+     * @param newBook
+     * @return
+     */
+    public boolean isCopy(Book newBook) {
+
+        for (int i = 0; i < books.size(); i++) {
+            if (newBook.getTitle().equals(books.get(i).getTitle())
+                    && newBook.getAuthor().equals(books.get(i).getAuthor())
+                    && newBook.getISBN().equals(books.get(i).getISBN())
+                    && newBook.getGenre().equals(books.get(i).getGenre())) {
+
+                books.get(i).setNumOfBooks(books.get(i).getNumOfBooks() + 1);
+                // increments number fo copies by 1
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * adds a book to catalog unless it already exists in which case it prompts
+     * isCopy method to add a copy to the existing entry
+     */
     public void addBook() {
         Book newBook = new Book();
 
@@ -99,9 +131,12 @@ public class Catalog {
 
         System.out.print("Enter in a genre: ");
         newBook.setGenre(Helper.inputNonBlankString());
-
-        getBookList().add(newBook);
-
+        if (isCopy(newBook) == true) {
+            System.out.println("Book already exists, adding a copy...");
+        } else {
+            newBook.setNumOfBooks(1); // adds one copy of the new book
+            getBookList().add(newBook);
+        }
     }
 
     /**

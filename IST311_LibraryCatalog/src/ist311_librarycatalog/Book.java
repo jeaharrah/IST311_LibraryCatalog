@@ -26,10 +26,12 @@ public class Book implements Comparable<Book> {
     private String _title;
     private String _author;
     private String _genre;
-    private String _genre2;
-    private String _genre3;
-    private boolean _borrowed;
-    private int _numOfBooks;
+//    private String _genre2;
+//    private String _genre3;
+    private boolean _avaliability = true; // by default, book there will be a book to borrow
+    private int _numOfBooks; // number of books in the library
+    private int _booksBorrowed; // number of books carried by user
+
 //    private Helper helper = new Helper();
     public Scanner keyboard = new Scanner(System.in);
 
@@ -39,38 +41,52 @@ public class Book implements Comparable<Book> {
 
     }
 
-    Book(String ISBN, String title, String author, String genre) {
+//    Book(String ISBN, String title, String author, String genre) {
+//        _ISBN = ISBN;
+//        _title = title;
+//        _author = author;
+//        _genre = genre;
+//
+//    }
+    Book(String ISBN, String title, String author, String genre, int numOfBooks) {
         _ISBN = ISBN;
         _title = title;
         _author = author;
         _genre = genre;
-
+        _numOfBooks = numOfBooks;
     }
 
     // Use method overloading in this constructor for creating a book object 
     // with two genres
-    Book(String ISBN, String title, String author, String genre, String genre2) {
-        _ISBN = ISBN;
-        _title = title;
-        _author = author;
-        _genre = genre;
-        _genre2 = genre2;
-    }
-
+//    Book(String ISBN, String title, String author, String genre, String genre2) {
+//        _ISBN = ISBN;
+//        _title = title;
+//        _author = author;
+//        _genre = genre;
+//        _genre2 = genre2;
+//    }
     // Use method overloading in this constructor for creating a book object 
     // with three genres
-    Book(String ISBN, String title, String author, String genre, String genre2, String genre3) {
-        _ISBN = ISBN;
-        _title = title;
-        _author = author;
-        _genre = genre;
-        _genre2 = genre2;
-        _genre3 = genre3;
-    }
+//    Book(String ISBN, String title, String author, String genre, String genre2, String genre3) {
+//        _ISBN = ISBN;
+//        _title = title;
+//        _author = author;
+//        _genre = genre;
+//        _genre2 = genre2;
+//        _genre3 = genre3;
+//    }
 
     /*
      ===========GETTERS AND SETTERS==================
      */
+    public int getBooksBorrowed() {
+        return _booksBorrowed;
+    }
+
+    public void setBooksBorrowed(int _booksBorrowed) {
+        this._booksBorrowed = _booksBorrowed;
+    }
+
     /**
      *
      * @return the private ISBN string
@@ -139,34 +155,33 @@ public class Book implements Comparable<Book> {
      *
      * @return the string of the second book genre descriptor
      */
-    public String getGenre2() {
-        return _genre2;
-    }
-
-    /**
-     *
-     * @param genre2
-     */
-    public void setGenre2(String genre2) {
-        _genre2 = genre2;
-    }
-
-    /**
-     *
-     * @return the string of the third book genre descriptor
-     */
-    public String getGenre3() {
-        return _genre3;
-    }
-
-    /**
-     *
-     * @param genre3
-     */
-    public void setGenre3(String genre3) {
-        _genre3 = genre3;
-    }
-
+//    public String getGenre2() {
+//        return _genre2;
+//    }
+//
+//    /**
+//     *
+//     * @param genre2
+//     */
+//    public void setGenre2(String genre2) {
+//        _genre2 = genre2;
+//    }
+//
+//    /**
+//     *
+//     * @return the string of the third book genre descriptor
+//     */
+//    public String getGenre3() {
+//        return _genre3;
+//    }
+//
+//    /**
+//     *
+//     * @param genre3
+//     */
+//    public void setGenre3(String genre3) {
+//        _genre3 = genre3;
+//    }
     /**
      *
      * @return the number of books avaliable
@@ -184,20 +199,50 @@ public class Book implements Comparable<Book> {
     }
 
     //=================METHODS==============
-
+    public void printBook() {
+        System.out.println("Book title: " + getTitle());
+        System.out.println("Author: " + getAuthor());
+        System.out.println("Book title: " + getISBN());
+        System.out.println("Book title: " + getGenre());
+        System.out.println("Borrow status: " + displayBorrowStatus());
+    }
 
     /**
-     * Will mark a book as borrowed
+     * Method to check if book is borrowed if not, will decrement number of
+     * remaining copies if 0 copies left, will mark book as borrowed
+     *
+     * @return Will check if book is borrowed
+     *
      */
-    public void borrowed() {
-        this._borrowed = true;
+    public boolean borrowBook() {
+        if (this._avaliability == false) { // no copies left
+            displayBorrowStatus();
+            return true;
+        } else { // book is NOT completely borrowed
+            displayBorrowStatus();
+            this._numOfBooks--; // decrements remaining copies 
+            if (this._numOfBooks == 0) { //checks if there are copies of books left
+                this._avaliability = false;  // sets to borrowed if NO books are left
+            } else if (this._numOfBooks > 0) { // otherwise
+                this._booksBorrowed++; // increments user's copies of books
+                
+            }
+            return false;
+        }
     }
 
     /**
      * Will mark a book as returned
      */
-    public void returned() {
-        this._borrowed = false;
+    public void returnBook() {
+        if (this._booksBorrowed > 0) { // if books borrowed is not 0, you will returna  book
+            System.out.println("You have returned a book.");
+            this._booksBorrowed--; // decrements user's books
+            this._numOfBooks++; // returns a book to library
+            this._avaliability = true;
+        } else {
+            System.out.println("You have no book to return!");
+        }
     }
 
     /**
@@ -205,12 +250,12 @@ public class Book implements Comparable<Book> {
      *
      * @return the string message that displays whether the book is available
      */
-    public String isBorrowed() {
+    public String displayBorrowStatus() {
         String availability = "";
 
-        if (this._borrowed == true) {
+        if (this._avaliability == false) {
             availability = "Sorry! This book is currently unavailable.";
-        } else if (this._borrowed == false) {
+        } else if (this._avaliability == true) {
             availability = "This book is available!";
         }
 
@@ -311,9 +356,9 @@ public class Book implements Comparable<Book> {
 
         System.out.println("==================After sort==================");
         catalog.displayBooks();
-        
+
         catalog.addBook();
-        
+
         catalog.displayBooks();
 
     }
