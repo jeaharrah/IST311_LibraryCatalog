@@ -7,6 +7,7 @@
 package ist311_librarycatalog;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 /**
  * This class will contain methods that deal with input validation for the user.
@@ -17,7 +18,6 @@ public class Helper {
 
     // Method that reads user input from the keyboard and continues prompting
     // the user until a valid number is entered
-
     /**
      *
      * @return the valid inputted integer
@@ -27,7 +27,7 @@ public class Helper {
         int number = 0;
         boolean validNum = false;
         String input = "";
-        
+
         do {
             System.out.print("Enter a number: ");
             input = in.nextLine();
@@ -47,18 +47,48 @@ public class Helper {
     // Method that reads user input from the keyboard and validates it to ensure
     // that the input is not empty or whitespace. This will be used when we
     // add functionality for the user to search for a book given certain keywords
+    /**
+     *
+     * @returns true for valid ISBN, false for invalid ISBN
+     */
+    public static boolean inputISBN(String string) {
+ 
+        String regex = "\\d+"; // checks for regular expressions of decimals only
+
+        if (string.length() != 13) {
+            System.out.println("Not 13 digit ISBN.");
+            return false;
+        } else if (!string.matches(regex)) {
+            System.out.println("Letters in ISBN.");
+            return false;
+        } else {
+            
+            return true;
+        }
+    }
+
+    public static String hyphenateISBN(String string) {
+        StringBuilder str = new StringBuilder(string);
+        str.insert(3, "-");
+        str.insert(5, "-");
+        str.insert(11, "-");
+        str.insert(15, "-");
+        string = str.toString();
+        return string;
+    }
 
     /**
      *
      * @return the valid inputted string
      */
+
     public static String inputNonBlankString() {
         Scanner keyboard = new Scanner(System.in);
         String input = "";
         boolean blankString = false;
 
         do {
-            System.out.print("Enter input: ");
+//            System.out.print("Enter input: ");
             input = keyboard.nextLine();
 
             if (input.equals("") || input.trim().isEmpty()) {

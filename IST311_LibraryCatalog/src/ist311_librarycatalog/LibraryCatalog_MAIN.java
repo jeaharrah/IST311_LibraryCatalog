@@ -6,6 +6,8 @@
  */
 package ist311_librarycatalog;
 
+import java.util.List;
+
 /**
  * Design a Library catalog. Create a catalog that contains various books. Allow
  * the users to search for books and show their status (availability). If
@@ -19,6 +21,11 @@ public class LibraryCatalog_MAIN {
     /**
      * @param args the command line arguments
      */
+    public static Catalog catalog = new Catalog();
+    public static Search search = new Search();
+    public static List<Book> bookList = catalog.getBookList();
+    private String input;
+    
     public static void main(String[] args) {
         Menu mainMenu = new Menu("Library");
         Menu searchMenu = new Menu("Search");
@@ -94,15 +101,17 @@ public class LibraryCatalog_MAIN {
                     MenuChoice choice = searchMenu.chooseFromMenu();
                 }
                 if (chosen == choiceReturnBook) {
-                    System.out.println("You've chosen to return materials!");
-                    MenuChoice choice = null;
+                    System.out.println("--MATERIAL RETURN--");
+                    System.out.println("Please enter ISBN");
+                    
+                    MenuChoice returnChoice = null;
                     do {
-                        choice = returnMenu.chooseFromMenu();
+                        returnChoice = returnMenu.chooseFromMenu();
 
-                        if (choice == returnToMain) {
+                        if (returnChoice == returnToMain) {
                             System.out.println("Made it to main");
                         }
-                    } while (choice != returnToMain);
+                    } while (returnChoice != returnToMain);
                 }
             }
         } while (finished != true);
