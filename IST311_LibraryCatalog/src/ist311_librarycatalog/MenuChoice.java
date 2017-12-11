@@ -12,13 +12,7 @@ package ist311_librarycatalog;
  */
 public class MenuChoice {
 
-    // Main method for testing class functionality
-    public static void main(String[] args) {
-        MenuChoice menuChoice = new MenuChoice("This is a new menu choice!");
-        // Verify that the menu choice text is printed out
-        System.out.println(menuChoice.getText());
-    }
-
+ 
     // Private constructor so that the programmer cannot create a menu choice
     // that has no descriptive string argument passed into it
     private MenuChoice() {
