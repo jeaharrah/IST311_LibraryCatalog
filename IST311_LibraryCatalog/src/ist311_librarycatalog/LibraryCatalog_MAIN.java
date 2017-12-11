@@ -6,6 +6,11 @@
  */
 package ist311_librarycatalog;
 
+import static ist311_librarycatalog.Book.BookAuthorComparator;
+import static ist311_librarycatalog.Book.BookGenreComparator;
+import static ist311_librarycatalog.Book.BookISBNComparator;
+import static ist311_librarycatalog.Book.BookNameComparator;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,9 +29,19 @@ public class LibraryCatalog_MAIN {
     public static Catalog catalog = new Catalog();
     public static Search search = new Search();
     public static List<Book> bookList = catalog.getBookList();
-    private String input;
-    
+
+    enum SearchSortOptions {
+        TITLE,
+        AUTHOR,
+        GENRE,
+        ISBN,
+    }
+
+    static List<SearchSortOptions> searchSortEnum = new ArrayList<SearchSortOptions>();
+
     public static void main(String[] args) {
+        System.out.println(searchSortEnum);
+
         Menu mainMenu = new Menu("Library");
         Menu searchMenu = new Menu("Search");
         Menu catalogMenu = new Menu("View Catalog");
@@ -93,25 +108,48 @@ public class LibraryCatalog_MAIN {
                 finished = true;
             } else {
                 if (chosen == choiceViewCatalog) {
-                    System.out.println("You've chosen to view the catalog!");
-                    MenuChoice choice = catalogMenu.chooseFromMenu();
+                    catalogMenu.getMenuTitle();
+                    System.out.println("You can sort the books by:");
+                    for (SearchSortOptions option : SearchSortOptions.values()) {
+                        System.out.println(option.ordinal() + 1 + ") " + option.toString());
+                    }
+
+                    int input = Helper.numberValidation();
+                    if (input == SearchSortOptions.TITLE.ordinal() + 1) {
+                        catalog.getBookList().sort(BookNameComparator);
+                        catalog.displayBooks();
+                    } else if (input == SearchSortOptions.AUTHOR.ordinal() + 1) {
+                        catalog.getBookList().sort(BookAuthorComparator);
+                    } else if (input == SearchSortOptions.GENRE.ordinal() + 1) {
+                        catalog.getBookList().sort(BookGenreComparator);
+                    } else if (input == SearchSortOptions.ISBN.ordinal() + 1) {
+                        catalog.getBookList().sort(BookISBNComparator);
+                    }
                 }
                 if (chosen == choiceSearch) {
-                    System.out.println("You've chosen to search the catalog!");
-                    MenuChoice choice = searchMenu.chooseFromMenu();
+                    searchMenu.getMenuTitle();
+                    System.out.println("You can search by:");
+                    for (SearchSortOptions option : SearchSortOptions.values()) {
+                        System.out.println(option.ordinal() + 1 + ") " + option.toString());
+                    }
+
+                    int input = Helper.numberValidation();
+
+                    if (input == SearchSortOptions.TITLE.ordinal() + 1) {
+                        search.searchByBookTitle(catalog);
+                    } else if (input == SearchSortOptions.AUTHOR.ordinal() + 1) {
+                        search.searchByAuthor(catalog);
+                    } else if (input == SearchSortOptions.GENRE.ordinal() + 1) {
+                        search.searchByGenre(catalog);
+                    } else if (input == SearchSortOptions.ISBN.ordinal() + 1) {
+                        search.searchByISBN(catalog);
+                    }
+                    break;
                 }
                 if (chosen == choiceReturnBook) {
                     System.out.println("--MATERIAL RETURN--");
-                    System.out.println("Please enter ISBN");
-                    
-                    MenuChoice returnChoice = null;
-                    do {
-                        returnChoice = returnMenu.chooseFromMenu();
+                    System.out.println("-Please enter ISBN of book being returned-");
 
-                        if (returnChoice == returnToMain) {
-                            System.out.println("Made it to main");
-                        }
-                    } while (returnChoice != returnToMain);
                 }
             }
         } while (finished != true);

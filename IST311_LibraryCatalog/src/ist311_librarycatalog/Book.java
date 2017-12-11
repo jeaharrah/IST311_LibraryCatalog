@@ -359,9 +359,9 @@ public class Book implements Comparable<Book> {
         // test case of book sorting by name
         catalog.displayBooks();
         catalog.getBookList().sort(BookNameComparator);
-//        catalog.getBookList().sort(BookISBNComparator);
-//        catalog.getBookList().sort(BookAuthorComparator);
-//        catalog.getBookList().sort(BookGenreComparator);
+        catalog.getBookList().sort(BookISBNComparator);
+        catalog.getBookList().sort(BookAuthorComparator);
+        catalog.getBookList().sort(BookGenreComparator);
 
         System.out.println("==================After sort==================");
         catalog.displayBooks();
