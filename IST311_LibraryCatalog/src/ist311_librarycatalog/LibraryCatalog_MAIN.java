@@ -187,6 +187,7 @@ public class LibraryCatalog_MAIN {
                 System.out.println("'View Catalog' allows you to view and sort the list of books.");
                 System.out.println("'Search' allows you to search for a book by an attribute and check out a book.");
                 System.out.println("'Return' allows you to return a book by entering its ISBN-13 code.");
+                System.out.println("'Add Book' allows you to add a book to the catalog.");
                 System.out.println("'Quit' allows you to quit the application.");
                 System.out.println("     -------------------------");
             }
