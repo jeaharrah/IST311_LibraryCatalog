@@ -13,21 +13,29 @@ public class Search {
 
 //    Book book = new Book();
     //Scanner in = new Scanner(System.in);
+
+    /**
+     *
+     */
     public static Catalog catalog = new Catalog();
+
+    /**
+     *
+     */
     public static Search search = new Search();
+
+    /**
+     *
+     */
     public static List<Book> bookList = catalog.getBookList();
     private String input;
     private Book foundBook = null;
 
-    public static void main(String[] args) {
-
-        search.searchByBookTitle(catalog);
-        search.searchByGenre(catalog);
-        search.searchByISBN(catalog);
-        search.searchByAuthor(catalog);
-
-    }
-
+    /**
+     *
+     * @param bookList
+     * @return
+     */
     public Book displaySearchResults(List<Book> bookList) {
         for (Book book : bookList) {
             foundBook = book;
@@ -36,6 +44,11 @@ public class Search {
         return foundBook;
     }
 
+    /**
+     *
+     * @param searchedBooks
+     * @return chooses a result based on search results
+     */
     public Book chooseResult(List<Book> searchedBooks) {
         int choice = Helper.numberValidation();
         boolean valid = true;
@@ -57,6 +70,11 @@ public class Search {
         return book;
     }
 
+    /**
+     *
+     * @param catalog
+     * @return a book found through Book title
+     */
     public Book searchByBookTitle(Catalog catalog) {
         List<Book> searchedBooks = new ArrayList<>();
         System.out.print("Search by book title: ");
@@ -83,6 +101,11 @@ public class Search {
         return foundBook;
     }
 
+    /**
+     *
+     * @param catalog
+     * @return a Book found through author
+     */
     public Book searchByAuthor(Catalog catalog) {
         System.out.println("--SEARCH BY AUTHOR--");
         List<Book> searchedBooks = new ArrayList<>();
@@ -112,6 +135,11 @@ public class Search {
 
     }
 
+    /**
+     *
+     * @param catalog
+     * @return a book found through ISBN
+     */
     public Book searchByISBN(Catalog catalog) {
         List<Book> searchedBooks = new ArrayList<>();
         System.out.println("--SEARCH BY ISBN-13--");
@@ -142,6 +170,11 @@ public class Search {
         return foundBook;
     }
 
+    /**
+     *
+     * @param catalog
+     * @return a Book found through genre
+     */
     public Book searchByGenre(Catalog catalog) {
         System.out.println("--SEARCH BY GENRE--");
         List<Book> searchedBooks = new ArrayList<>();
