@@ -47,7 +47,7 @@ public class LibraryCatalog_MAIN {
     enum ReturnToMain {
         RETURN_TO_MAIN,
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -156,7 +156,7 @@ public class LibraryCatalog_MAIN {
 
                 System.out.println("Please enter ISBN of book being returned");
                 String returnISBN = Helper.inputISBN();
-                
+
                 for (int i = 0; i < catalog.getBookList().size(); i++) {
                     if (catalog.getBookList().get(i).getISBN().toLowerCase().equals(returnISBN.toLowerCase())) {
                         catalog.getBookList().get(i).returnBook();
@@ -168,13 +168,13 @@ public class LibraryCatalog_MAIN {
                 if (found == false) {
                     System.out.println("No book found for that ISBN.");
                 }
-                System.out.println("");                
-                
+                System.out.println("");
+
             } else if (chosen == choiceAddBook) {
                 addMenu.getMenuTitle();
                 catalog.addBook();
-            
-        } else if (chosen == choiceHelp) {
+                
+            } else if (chosen == choiceHelp) {
                 helpMenu.getMenuTitle();
                 System.out.println("--INSTRUCTIONS--");
 
