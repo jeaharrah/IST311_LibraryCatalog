@@ -47,7 +47,7 @@ public class Search {
 
     public void searchByBookTitle(Catalog catalog) {
         List<Book> searchedBooks = new ArrayList<>();
-        System.out.println("Search by book title: ");
+        System.out.print("Search by book title: ");
         input = Helper.inputNonBlankString();
         for (int i = 0; i < bookList.size(); i++) {
             if (catalog.getBookList().get(i).getTitle().toLowerCase().contains(input.toLowerCase())) {
@@ -71,7 +71,7 @@ public class Search {
 
     public void searchByAuthor(Catalog catalog) {
         List<Book> searchedBooks = new ArrayList<>();
-        System.out.println("Search by author: ");
+        System.out.print("Search by author: ");
         input = Helper.inputNonBlankString();
 
         for (int i = 0; i < bookList.size(); i++) {
@@ -124,7 +124,7 @@ public class Search {
 
     public void searchByGenre(Catalog catalog) {
         List<Book> searchedBooks = new ArrayList<>();
-        System.out.println("Search by genre: ");
+        System.out.print("Search by genre: ");
         input = Helper.inputNonBlankString();
 
         for (int i = 0; i < bookList.size(); i++) {
