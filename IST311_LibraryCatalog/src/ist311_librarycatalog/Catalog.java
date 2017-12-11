@@ -87,17 +87,14 @@ public class Catalog {
 
         System.out.print("Enter in a ISBN (13 digits, no dashes): ");
         String regISBN = Helper.inputNonBlankString();
-        
-        while (Helper.inputISBN(regISBN) == false){
+
+        while (Helper.inputISBN(regISBN) == false) {
             System.out.print("Enter in a ISBN (13 digits, no dashes): ");
             regISBN = Helper.inputNonBlankString();
         }
         StringBuilder str = new StringBuilder(regISBN);
-        str.insert(3, "-");
-        str.insert(5, "-");
-        str.insert(11, "-");
-        str.insert(15, "-");       // 3, 5, 11, 15
-        regISBN = str.toString();
+
+        regISBN = Helper.hyphenateISBN(regISBN);
         newBook.setISBN(regISBN);
 
         System.out.print("Enter in a genre: ");

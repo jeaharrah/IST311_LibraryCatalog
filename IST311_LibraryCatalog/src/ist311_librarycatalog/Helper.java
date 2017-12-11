@@ -47,26 +47,36 @@ public class Helper {
     // Method that reads user input from the keyboard and validates it to ensure
     // that the input is not empty or whitespace. This will be used when we
     // add functionality for the user to search for a book given certain keywords
-
-    
-        /**
+    /**
      *
-     * @returns true for valid ISBN
+     * @returns true for valid ISBN, false for invalid ISBN
      */
     public static boolean inputISBN(String string) {
-        
+ 
         String regex = "\\d+"; // checks for regular expressions of decimals only
-        
+
         if (string.length() != 13) {
             System.out.println("Not 13 digit ISBN.");
             return false;
         } else if (!string.matches(regex)) {
             System.out.println("Letters in ISBN.");
             return false;
-        } else{
+        } else {
+            
             return true;
         }
     }
+
+    public static String hyphenateISBN(String string) {
+        StringBuilder str = new StringBuilder(string);
+        str.insert(3, "-");
+        str.insert(5, "-");
+        str.insert(11, "-");
+        str.insert(15, "-");
+        string = str.toString();
+        return string;
+    }
+
     /**
      *
      * @return the valid inputted string
