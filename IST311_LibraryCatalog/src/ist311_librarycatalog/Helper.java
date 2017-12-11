@@ -49,6 +49,10 @@ public class Helper {
         return number;
     }
 
+    /**
+     * Method uses validateISBN and hyphenateISBN to
+     * @return String for validated ISBN with dashes
+     */
     public static String inputISBN() {
         System.out.print("Enter in ISBN-13 code (13 digits, no dashes): ");
         String regISBN = Helper.inputNonBlankString();
@@ -81,6 +85,12 @@ public class Helper {
             return true;
         }
     }
+
+    /**
+     *
+     * @param string
+     * @return
+=======
     
      /**
      * Method for adding hyphens between characters in a string
@@ -89,6 +99,7 @@ public class Helper {
      * of entering them in the correct positions him-/herself.
      * @param string
      * @return modified ISBN string with hyphens inserted
+>>>>>>> origin/master
      */
     public static String hyphenateISBN(String string) {
         StringBuilder str = new StringBuilder(string);

@@ -83,7 +83,7 @@ public class LibraryCatalog_MAIN {
                 // Else-if block for user wanting to view catalog
             } else if (chosen == choiceViewCatalog) {
                 catalogMenu.getMenuTitle();
-                
+
                 System.out.println("You can sort the catalog by:");
                 for (SearchSortOptions option : SearchSortOptions.values()) {
                     System.out.println(option.ordinal() + 1 + ") " + option.toString());
@@ -149,10 +149,11 @@ public class LibraryCatalog_MAIN {
             } else if (chosen == choiceReturnBook) {
                 returnMenu.getMenuTitle();
                 boolean found = false;
+                System.out.println("");
                 System.out.println("NOTE: If you chose this option by accident "
-                        + "and have no books to return, simply enter 13 consecutive zeros (0) "
+                        + "and have no books to return, simply enter any letter "
                         + "to return to main.");
-                
+
                 System.out.println("Please enter ISBN of book being returned");
                 String returnISBN = Helper.inputISBN();
                 

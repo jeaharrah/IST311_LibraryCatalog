@@ -16,21 +16,7 @@ import java.util.Scanner;
  */
 public class Menu {
 
-    public static void main(String[] args) {
-        // Created new instance of the class to test method, as per instructions
-        Menu mainMenu = new Menu("LIBRARY");
-
-        MenuChoice viewCatalog = mainMenu.addChoice("View Catalog");
-        MenuChoice search = mainMenu.addChoice("Search");
-        MenuChoice returnBook = mainMenu.addChoice("Return");
-        MenuChoice help = mainMenu.addChoice("Help");
-        MenuChoice quit = mainMenu.addChoice("Quit");
-
-        mainMenu.getMenuTitle();
-        mainMenu.chooseFromMenu();
-
-    }
-
+ 
     // enumerate to hold the values of the menu in a dynamic way
     enum MenuChoices {
         VIEW_CATALOG,

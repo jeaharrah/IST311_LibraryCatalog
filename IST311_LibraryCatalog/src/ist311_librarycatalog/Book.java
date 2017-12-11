@@ -351,26 +351,4 @@ public class Book implements Comparable<Book> {
         }
     };
 
-    /**
-     *
-     * @param args
-     */
-    public static void main(String[] args) {
-        Catalog catalog = new Catalog();
-
-        // test case of book sorting by name
-        catalog.displayBooks();
-        catalog.getBookList().sort(BookNameComparator);
-        catalog.getBookList().sort(BookISBNComparator);
-        catalog.getBookList().sort(BookAuthorComparator);
-        catalog.getBookList().sort(BookGenreComparator);
-
-        System.out.println("==================After sort==================");
-        catalog.displayBooks();
-
-        catalog.addBook();
-
-        catalog.displayBooks();
-
-    }
 }

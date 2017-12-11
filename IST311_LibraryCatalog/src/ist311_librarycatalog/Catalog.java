@@ -134,17 +134,5 @@ public class Catalog {
         }
     }
 
-    /**
-     * Main method for testing Catalog.java methods
-     *
-     * @author Jennifer A'Harrah <jka5240@psu.edu>
-     * @param args
-     */
-    public static void main(String[] args) {
-        Catalog catalog = new Catalog();
-
-        catalog.displayBooks();
-
-    }
 
 }
