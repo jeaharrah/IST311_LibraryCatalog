@@ -18,11 +18,13 @@ import java.util.regex.Pattern;
  * @author Jennifer A'Harrah <jka5240@psu.edu>
  */
 public class Helper {
+
     private Book returnedBook = null;
-    
+
     /**
      * Method that reads user input from the keyboard and continues prompting
      * the user until a valid number is entered
+     *
      * @return the valid inputted integer
      */
     public static int numberValidation() {
@@ -47,14 +49,27 @@ public class Helper {
         return number;
     }
 
+    public static String inputISBN() {
+        System.out.print("Enter in ISBN-13 code (13 digits, no dashes): ");
+        String regISBN = Helper.inputNonBlankString();
+
+        while (Helper.validateISBN(regISBN) == false) {
+            System.out.print("Enter in ISBN-13 code (13 digits, no dashes): ");
+            regISBN = Helper.inputNonBlankString();
+        }
+
+        regISBN = Helper.hyphenateISBN(regISBN);
+        return regISBN;
+    }
+
     /**
      *
      * @param string
-     * @return 
+     * @return
      * @returns true for valid ISBN, false for invalid ISBN
      */
-    public static boolean inputISBN(String string) {
- 
+    public static boolean validateISBN(String string) {
+
         String regex = "\\d+"; // checks for regular expressions of decimals only
 
         if (string.length() != 13) {
@@ -67,7 +82,7 @@ public class Helper {
             return true;
         }
     }
-    
+
     public static String hyphenateISBN(String string) {
         StringBuilder str = new StringBuilder(string);
         str.insert(3, "-");
@@ -82,7 +97,6 @@ public class Helper {
      *
      * @return the valid inputted string
      */
-
     public static String inputNonBlankString() {
         Scanner keyboard = new Scanner(System.in);
         String input = "";

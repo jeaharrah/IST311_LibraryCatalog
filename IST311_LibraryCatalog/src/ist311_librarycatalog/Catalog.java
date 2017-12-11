@@ -120,16 +120,7 @@ public class Catalog {
         String fullName = lastName + ", " + firstName;
         newBook.setAuthor(fullName);
 
-        System.out.print("Enter in ISBN-13 code (13 digits, no dashes): ");
-        String regISBN = Helper.inputNonBlankString();
-
-        while (Helper.inputISBN(regISBN) == false) {
-            System.out.print("Enter in ISBN-13 code (13 digits, no dashes): ");
-            regISBN = Helper.inputNonBlankString();
-        }
-        StringBuilder str = new StringBuilder(regISBN);
-
-        regISBN = Helper.hyphenateISBN(regISBN);
+        String regISBN = Helper.inputISBN();
         newBook.setISBN(regISBN);
 
         System.out.print("Enter in a genre: ");

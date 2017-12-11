@@ -116,8 +116,8 @@ public class Search {
         List<Book> searchedBooks = new ArrayList<>();
         System.out.println("--SEARCH BY ISBN-13--");
         System.out.println("NOTE: Enter ISBN-13 code up to 13 digits with NO dashes.");
-        System.out.print("Search by ISBN: ");
-        input = Helper.inputNonBlankString();
+        System.out.println("Search by ISBN. ");
+        input = Helper.inputISBN();
 
         for (int i = 0; i < bookList.size(); i++) {
             if (catalog.getBookList().get(i).getISBN().toLowerCase().contains(input.toLowerCase())) {
