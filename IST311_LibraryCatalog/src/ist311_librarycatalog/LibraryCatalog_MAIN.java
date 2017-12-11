@@ -37,6 +37,10 @@ public class LibraryCatalog_MAIN {
         ISBN,
     }
 
+    enum ReturnToMain {
+        RETURN_TO_MAIN,
+    }
+
     public static void main(String[] args) {
 
         Menu mainMenu = new Menu("Library");
@@ -97,67 +101,85 @@ public class LibraryCatalog_MAIN {
 
         boolean finished = false;
 
-        MenuChoice chosen = mainMenu.chooseFromMenu();
+        MenuChoice chosen = null;
 
         do {
+            chosen = mainMenu.chooseFromMenu();
             if (chosen == choiceQuit) {
                 System.out.println("Thanks for visiting!");
                 finished = true;
-            } else {
-                if (chosen == choiceViewCatalog) {
-                    catalogMenu.getMenuTitle();
-                    System.out.println("You can sort the catalog by:");
-                    for (SearchSortOptions option : SearchSortOptions.values()) {
-                        System.out.println(option.ordinal() + 1 + ") " + option.toString());
-                    }
-                    
-                    System.out.println("");
-                    int input = Helper.numberValidation();
-                    System.out.println("");
-                    
-                    if (input == SearchSortOptions.TITLE.ordinal() + 1) {
-                        catalog.getBookList().sort(BookNameComparator);
-                        catalog.displayBooks();
-                    } else if (input == SearchSortOptions.AUTHOR.ordinal() + 1) {
-                        catalog.getBookList().sort(BookAuthorComparator);
-                    } else if (input == SearchSortOptions.GENRE.ordinal() + 1) {
-                        catalog.getBookList().sort(BookGenreComparator);
-                    } else if (input == SearchSortOptions.ISBN.ordinal() + 1) {
-                        catalog.getBookList().sort(BookISBNComparator);
-                    }
-                }
                 
-                if (chosen == choiceSearch) {
-                    searchMenu.getMenuTitle();
-                    System.out.println("You can search by:");
-                    for (SearchSortOptions option : SearchSortOptions.values()) {
-                        System.out.println(option.ordinal() + 1 + ") " + option.toString());
-                    }
-                    
-                    System.out.println("");
-                    int input = Helper.numberValidation();
-                    System.out.println("");
+                // Else-if block for user wanting to view catalog
+            } else if (chosen == choiceViewCatalog) {
+                catalogMenu.getMenuTitle();
+                System.out.println("You can sort the catalog by:");
+                for (SearchSortOptions option : SearchSortOptions.values()) {
+                    System.out.println(option.ordinal() + 1 + ") " + option.toString());
+                }
+                System.out.println("Or:");
+                for (ReturnToMain option : ReturnToMain.values()) {
+                    System.out.println(SearchSortOptions.values().length + 1 + ") " + option.toString());
 
-                    if (input == SearchSortOptions.TITLE.ordinal() + 1) {
-                        search.searchByBookTitle(catalog);
-                    } else if (input == SearchSortOptions.AUTHOR.ordinal() + 1) {
-                        search.searchByAuthor(catalog);
-                    } else if (input == SearchSortOptions.GENRE.ordinal() + 1) {
-                        search.searchByGenre(catalog);
-                    } else if (input == SearchSortOptions.ISBN.ordinal() + 1) {
-                        search.searchByISBN(catalog);
-                    }
-                    break;
                 }
-                if (chosen == choiceReturnBook) {
-                    returnMenu.getMenuTitle();
-                    System.out.println("Please enter ISBN of book being returned");
-                    
-                    
-                    break;
+
+                System.out.println("");
+                int input = Helper.numberValidation();
+                System.out.println("");
+
+                if (input == SearchSortOptions.TITLE.ordinal() + 1) {
+                    catalog.getBookList().sort(BookNameComparator);
+                    catalog.displayBooks();
+                } else if (input == SearchSortOptions.AUTHOR.ordinal() + 1) {
+                    catalog.getBookList().sort(BookAuthorComparator);
+                    catalog.displayBooks();
+                } else if (input == SearchSortOptions.GENRE.ordinal() + 1) {
+                    catalog.getBookList().sort(BookGenreComparator);
+                    catalog.displayBooks();
+                } else if (input == SearchSortOptions.ISBN.ordinal() + 1) {
+                    catalog.getBookList().sort(BookISBNComparator);
+                    catalog.displayBooks();
+                } else if (input == SearchSortOptions.values().length + 1) {
+                    mainMenu.chooseFromMenu();
+
                 }
+                // Else-if block for user wanting to search
+            } else if (chosen == choiceSearch) {
+                searchMenu.getMenuTitle();
+
+                System.out.println("You can search by:");
+                for (SearchSortOptions option : SearchSortOptions.values()) {
+                    System.out.println(option.ordinal() + 1 + ") " + option.toString());
+                }
+
+                System.out.println("Or:");
+                for (ReturnToMain option : ReturnToMain.values()) {
+                    System.out.println(SearchSortOptions.values().length + 1 + ") " + option.toString());
+
+                }
+
+                System.out.println("");
+                int input = Helper.numberValidation();
+                System.out.println("");
+
+                if (input == SearchSortOptions.TITLE.ordinal() + 1) {
+                    search.searchByBookTitle(catalog);
+                } else if (input == SearchSortOptions.AUTHOR.ordinal() + 1) {
+                    search.searchByAuthor(catalog);
+                } else if (input == SearchSortOptions.GENRE.ordinal() + 1) {
+                    search.searchByGenre(catalog);
+                } else if (input == SearchSortOptions.ISBN.ordinal() + 1) {
+                    search.searchByISBN(catalog);
+                }
+                break;
+            }
+            if (chosen == choiceReturnBook) {
+                returnMenu.getMenuTitle();
+                System.out.println("Please enter ISBN of book being returned");
+
+                break;
             }
         } while (finished != true);
+
     }
 
 }

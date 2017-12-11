@@ -51,7 +51,7 @@ public class Search {
 
         Book book = searchedBooks.get(choice - 1);
 
-        System.out.println("You chose this book.");
+        System.out.println("You chose this book:");
         book.printBook();
 
         return book;
@@ -79,7 +79,7 @@ public class Search {
         } else {
             System.out.println("No books found containing the keyword \"" + input + "\" in the title.");
         }
-        
+
         return foundBook;
     }
 
@@ -103,6 +103,8 @@ public class Search {
                 System.out.println(book.getAuthor());
                 i++;
             }
+            chooseResult(searchedBooks);
+
         } else {
             System.out.println("No books found containing the keyword \"" + input + "\" in the author.");
         }
@@ -127,9 +129,13 @@ public class Search {
             System.out.println(searchedBooks.size() + " book(s) found with an ISBN-13 code matching " + input + ".");
             for (Book book : searchedBooks) {
                 System.out.print(i + ") ");
+                System.out.println(book.getTitle());
+                System.out.println(book.getAuthor());
                 System.out.println(book.getISBN());
                 i++;
             }
+            chooseResult(searchedBooks);
+
         } else {
             System.out.println("No books found with an ISBN-13 code matching " + input + ".");
         }
@@ -155,9 +161,19 @@ public class Search {
             int i = 1;
             for (Book book : searchedBooks) {
                 System.out.print(i + ") ");
+                System.out.println(book.getTitle());
+                System.out.println(book.getAuthor());
                 System.out.println(book.getGenre());
+                if (book.getGenre2() != null) {
+                    System.out.println(book.getGenre2());
+                }
+                if (book.getGenre3() != null) {
+                    System.out.println(book.getGenre3());
+                }
                 i++;
             }
+            chooseResult(searchedBooks);
+
         } else {
             System.out.println("No books found containing the keyword \"" + input + "\" in the genre.");
         }

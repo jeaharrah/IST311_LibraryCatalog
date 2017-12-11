@@ -56,6 +56,7 @@ public class Catalog {
      * @author Jennifer A'Harrah <jka5240@psu.edu>
      */
     public void displayBooks() {
+        System.out.println("");
         System.out.println("------BOOK CATALOG------");
         System.out.println("Number of books: [" + books.size() + "]");
         System.out.println("");
@@ -75,7 +76,7 @@ public class Catalog {
             System.out.println("------------");
 
         }
-
+        System.out.println("");
     }
 
     /**
