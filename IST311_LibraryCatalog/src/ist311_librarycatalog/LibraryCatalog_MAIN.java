@@ -73,7 +73,7 @@ public class LibraryCatalog_MAIN {
                 // Else-if block for user wanting to view catalog
             } else if (chosen == choiceViewCatalog) {
                 catalogMenu.getMenuTitle();
-                
+
                 System.out.println("You can sort the catalog by:");
                 for (SearchSortOptions option : SearchSortOptions.values()) {
                     System.out.println(option.ordinal() + 1 + ") " + option.toString());
@@ -138,7 +138,11 @@ public class LibraryCatalog_MAIN {
 
             } else if (chosen == choiceReturnBook) {
                 boolean found = false;
-                
+                System.out.println("");
+                System.out.println("NOTE: If you chose this option by accident "
+                        + "and have no books to return, simply enter any letter "
+                        + "to return to main.");
+
                 System.out.println("Please enter ISBN of book being returned");
                 String returnISBN = Helper.inputISBN();
                 for (int i = 0; i < catalog.getBookList().size(); i++) {
@@ -153,14 +157,7 @@ public class LibraryCatalog_MAIN {
                     System.out.println("No book found for that ISBN.");
                     returnMenu.getMenuTitle(); // 
                 }
-                
-                
-                System.out.println("");
-                System.out.println("NOTE: If you chose this option by accident "
-                        + "and have no books to return, simply enter any letter "
-                        + "to return to main.");
-                
-                
+
             } else if (chosen == choiceHelp) {
                 helpMenu.getMenuTitle();
                 System.out.println("--INSTRUCTIONS--");

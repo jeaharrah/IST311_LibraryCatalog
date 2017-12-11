@@ -49,6 +49,10 @@ public class Helper {
         return number;
     }
 
+    /**
+     *
+     * @return String for validated ISBN with dashes
+     */
     public static String inputISBN() {
         System.out.print("Enter in ISBN-13 code (13 digits, no dashes): ");
         String regISBN = Helper.inputNonBlankString();
@@ -83,6 +87,11 @@ public class Helper {
         }
     }
 
+    /**
+     *
+     * @param string
+     * @return
+     */
     public static String hyphenateISBN(String string) {
         StringBuilder str = new StringBuilder(string);
         str.insert(3, "-");
