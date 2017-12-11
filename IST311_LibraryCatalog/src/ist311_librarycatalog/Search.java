@@ -15,30 +15,29 @@ public class Search {
     //Scanner in = new Scanner(System.in);
     public static Catalog catalog = new Catalog();
     public static Search search = new Search();
-    public static List<Book> bookList =  catalog.getBookList();
+    public static List<Book> bookList = catalog.getBookList();
     private String input;
     private boolean found;
-    
+
     public static void main(String[] args) {
         boolean finished = false;
-       int choice = 0;
-       
-       
-       search.searchByBookTitle(catalog);
- 
+        int choice = 0;
+
+        search.searchByGenre(catalog);
+
 //       while(!finished){
 //           if(choice == 1){
 //               search.searchByBookTitle(catalog);
 //           }
 //       }
-        
     }
-    
-    public void displaySearchResults(List<Book> bookList){
-        for(Book book: bookList){
+
+    public void displaySearchResults(List<Book> bookList) {
+        for (Book book : bookList) {
             System.out.println(book);
         }
     }
+
     public void searchByBookTitle(Catalog catalog) {
         List<Book> searchedBooks = new ArrayList<>();
         input = Helper.inputNonBlankString();
@@ -48,15 +47,14 @@ public class Search {
                 searchedBooks.add(bookList.get(i));
             }
         }
-        if(searchedBooks.size() != 0){
-            for(Book book: searchedBooks){
+        if (searchedBooks.size() != 0) {
+            for (Book book : searchedBooks) {
                 System.out.println(book.getTitle());
             }
+        } else {
+            System.out.println("No books found containing the keyword \"" + input + "\" in the title.");
         }
-        else{
-            System.out.println("No books found.");
-        }
- 
+
     }
 
     public void searchByAuthor(Catalog catalog) {
@@ -68,19 +66,22 @@ public class Search {
                 searchedBooks.add(bookList.get(i));
             }
         }
-        if(!searchedBooks.isEmpty()){
-            for(Book book: searchedBooks){
+        if (!searchedBooks.isEmpty()) {
+            for (Book book : searchedBooks) {
                 System.out.println(book.getAuthor());
             }
+        } else {
+            System.out.println("No books found containing the keyword \"" + input + "\" in the author.");
         }
-        else{
-            System.out.println("No books found.");
-        }
- 
+
     }
 
     public void searchByISBN(Catalog catalog) {
         List<Book> searchedBooks = new ArrayList<>();
+        System.out.println("--SEARCH BY ISBN-13--");
+        System.out.println("NOTE: Enter ISBN-13 code in proper hyphenated notation");
+        System.out.println("Format is as follows: 'XXX-X-XXXXX-XXX-X'");
+
         input = Helper.inputNonBlankString();
 
         for (int i = 0; i < bookList.size(); i++) {
@@ -88,15 +89,14 @@ public class Search {
                 searchedBooks.add(bookList.get(i));
             }
         }
-        if(!searchedBooks.isEmpty()){
-            for(Book book: searchedBooks){
+        if (!searchedBooks.isEmpty()) {
+            for (Book book : searchedBooks) {
                 System.out.println(book.getISBN());
             }
+        } else {
+            System.out.println("No books found with an ISBN-13 code matching " + input + ".");
         }
-        else{
-            System.out.println("No books found.");
-        }
- 
+
     }
 
     public void searchByGenre(Catalog catalog) {
@@ -108,14 +108,13 @@ public class Search {
                 searchedBooks.add(bookList.get(i));
             }
         }
-        if(!searchedBooks.isEmpty()){
-            for(Book book: searchedBooks){
+        if (!searchedBooks.isEmpty()) {
+            for (Book book : searchedBooks) {
                 System.out.println(book.getGenre());
             }
+        } else {
+            System.out.println("No books found containing the keyword \"" + input + "\" in the genre.");
         }
-        else{
-            System.out.println("No books found.");
-        }
- 
+
     }
 }
