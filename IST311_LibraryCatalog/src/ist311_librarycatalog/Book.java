@@ -48,6 +48,7 @@ public class Book implements Comparable<Book> {
         _genre = genre;
 
     }
+
     Book(String ISBN, String title, String author, String genre, int numOfBooks) {
         _ISBN = ISBN;
         _title = title;
@@ -65,6 +66,7 @@ public class Book implements Comparable<Book> {
         _genre = genre;
         _genre2 = genre2;
     }
+
     //Use method overloading in this constructor for creating a book object 
     //with three genres
     Book(String ISBN, String title, String author, String genre, String genre2, String genre3) {
@@ -182,6 +184,7 @@ public class Book implements Comparable<Book> {
     public void setGenre3(String genre3) {
         _genre3 = genre3;
     }
+
     /**
      *
      * @return the number of books avaliable
@@ -202,8 +205,14 @@ public class Book implements Comparable<Book> {
     public void printBook() {
         System.out.println("Book title: " + getTitle());
         System.out.println("Author: " + getAuthor());
-        System.out.println("Book title: " + getISBN());
-        System.out.println("Book title: " + getGenre());
+        System.out.println("Book ISBN: " + getISBN());
+        System.out.println("Book genre: " + getGenre());
+        if (getGenre2() != null) {
+            System.out.println("Book genre 2: " + getGenre2());
+        }
+        if (getGenre3() != null) {
+            System.out.println("Book genre 3: " + getGenre3());
+        }
         System.out.println("Borrow status: " + displayBorrowStatus());
     }
 
@@ -225,7 +234,7 @@ public class Book implements Comparable<Book> {
                 this._avaliability = false;  // sets to borrowed if NO books are left
             } else if (this._numOfBooks > 0) { // otherwise
                 this._booksBorrowed++; // increments user's copies of books
-                
+
             }
             return false;
         }
