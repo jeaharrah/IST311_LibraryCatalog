@@ -18,11 +18,13 @@ import java.util.Scanner;
  * @author Jennifer A'Harrah <jka5240@psu.edu>
  */
 public class Helper {
-    private final Book returnedBook = null;
-    
+
+    private Book returnedBook = null;
+
     /**
      * Method that reads user input from the keyboard and continues prompting
      * the user until a valid number is entered
+     *
      * @return the valid inputted integer
      */
     public static int numberValidation() {
@@ -47,13 +49,27 @@ public class Helper {
         return number;
     }
 
+    public static String inputISBN() {
+        System.out.print("Enter in ISBN-13 code (13 digits, no dashes): ");
+        String regISBN = Helper.inputNonBlankString();
+
+        while (Helper.validateISBN(regISBN) == false) {
+            System.out.print("Enter in ISBN-13 code (13 digits, no dashes): ");
+            regISBN = Helper.inputNonBlankString();
+        }
+
+        regISBN = Helper.hyphenateISBN(regISBN);
+        return regISBN;
+    }
+
     /**
      *
      * @param string
-     * @return true for valid ISBN, false for invalid ISBN
+     * @return
+     * @returns true for valid ISBN, false for invalid ISBN
      */
-    public static boolean inputISBN(String string) {
- 
+    public static boolean validateISBN(String string) {
+
         String regex = "\\d+"; // checks for regular expressions of decimals only
 
         if (string.length() != 13) {
@@ -66,15 +82,7 @@ public class Helper {
             return true;
         }
     }
-    
-    /**
-     * Method for adding hyphens between characters in a string
-     * Gives programmer a way to maintain a consistent data format
-     * for the ISBN-13 codes without having to do a challenging task
-     * of entering them in the correct positions him-/herself.
-     * @param string
-     * @return modified ISBN string with hyphens inserted
-     */
+
     public static String hyphenateISBN(String string) {
         StringBuilder str = new StringBuilder(string);
         str.insert(3, "-");

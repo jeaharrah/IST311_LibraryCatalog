@@ -145,8 +145,22 @@ public class LibraryCatalog_MAIN {
                 }
 
             } else if (chosen == choiceReturnBook) {
-                returnMenu.getMenuTitle();
+                boolean found = false;
+                
                 System.out.println("Please enter ISBN of book being returned");
+                String returnISBN = Helper.inputISBN();
+                for (int i = 0; i < catalog.getBookList().size(); i++) {
+                    if (catalog.getBookList().get(i).getISBN().toLowerCase().equals(returnISBN.toLowerCase())) {
+                        catalog.getBookList().get(i).returnBook();
+                        found = true;
+                        returnMenu.getMenuTitle();
+                    }
+
+                }
+                if (found == false) {
+                    System.out.println("No book found for that ISBN.");
+                    returnMenu.getMenuTitle(); // 
+                }
                 
                 
                 System.out.println("");
