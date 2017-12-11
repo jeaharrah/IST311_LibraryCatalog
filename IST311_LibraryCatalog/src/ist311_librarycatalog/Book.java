@@ -28,7 +28,7 @@ public class Book implements Comparable<Book> {
     private String _genre;
     private String _genre2;
     private String _genre3;
-    private boolean _avaliability = true; // by default, book there will be a book to borrow
+    private boolean _availability = true; // by default, book there will be a book to borrow
     private int _numOfBooks; // number of books in the library
     private int _booksBorrowed; // number of books carried by user
 
@@ -228,14 +228,14 @@ public class Book implements Comparable<Book> {
      *
      */
     public boolean borrowBook() {
-        if (this._avaliability == false) { // no copies left
+        if (this._availability == false) { // no copies left
             displayBorrowStatus();
             return true;
         } else { // book is NOT completely borrowed
             displayBorrowStatus();
             this._numOfBooks--; // decrements remaining copies 
             if (this._numOfBooks == 0) { //checks if there are copies of books left
-                this._avaliability = false;  // sets to borrowed if NO books are left
+                this._availability = false;  // sets to borrowed if NO books are left
             } else if (this._numOfBooks > 0) { // otherwise
                 this._booksBorrowed++; // increments user's copies of books
 
@@ -252,7 +252,7 @@ public class Book implements Comparable<Book> {
             System.out.println("You have returned a book.");
             this._booksBorrowed--; // decrements user's books
             this._numOfBooks++; // returns a book to library
-            this._avaliability = true;
+            this._availability = true;
         } else {
             System.out.println("You have no book to return!");
         }
@@ -266,9 +266,9 @@ public class Book implements Comparable<Book> {
     public String displayBorrowStatus() {
         String availability = "";
 
-        if (this._avaliability == false) {
+        if (this._availability == false) {
             availability = "Sorry! This book is currently unavailable.";
-        } else if (this._avaliability == true) {
+        } else if (this._availability == true) {
             availability = "This book is available!";
         }
 

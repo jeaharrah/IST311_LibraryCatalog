@@ -57,6 +57,7 @@ public class LibraryCatalog_MAIN {
         Menu searchMenu = new Menu("Search");
         Menu catalogMenu = new Menu("View Catalog");
         Menu returnMenu = new Menu("Material Return");
+        Menu addMenu = new Menu("Add Book to Catalog");
         Menu helpMenu = new Menu("Help");
 
         /**
@@ -65,6 +66,7 @@ public class LibraryCatalog_MAIN {
         MenuChoice choiceViewCatalog = mainMenu.addChoice("View Catalog");
         MenuChoice choiceSearch = mainMenu.addChoice("Search");
         MenuChoice choiceReturnBook = mainMenu.addChoice("Return");
+        MenuChoice choiceAddBook = mainMenu.addChoice("Add Book");
         MenuChoice choiceHelp = mainMenu.addChoice("Help");
         MenuChoice choiceQuit = mainMenu.addChoice("Quit");
 
@@ -167,7 +169,11 @@ public class LibraryCatalog_MAIN {
                 }
                 System.out.println("");                
                 
-            } else if (chosen == choiceHelp) {
+            } else if (chosen == choiceAddBook) {
+                addMenu.getMenuTitle();
+                catalog.addBook();
+            
+        } else if (chosen == choiceHelp) {
                 helpMenu.getMenuTitle();
                 System.out.println("--INSTRUCTIONS--");
 

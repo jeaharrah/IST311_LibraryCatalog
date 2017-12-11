@@ -130,6 +130,7 @@ public class Catalog {
         } else {
             newBook.setNumOfBooks(1); // adds one copy of the new book
             getBookList().add(newBook);
+            System.out.println("Book has been added to the catalog!");
         }
     }
 
