@@ -353,8 +353,6 @@ public class Book implements Comparable<Book> {
      */
     public static void main(String[] args) {
         Catalog catalog = new Catalog();
-        Search search = new Search();
-        List<Book> books = new ArrayList<>(catalog.getBookList());
 
         // test case of book sorting by name
         catalog.displayBooks();

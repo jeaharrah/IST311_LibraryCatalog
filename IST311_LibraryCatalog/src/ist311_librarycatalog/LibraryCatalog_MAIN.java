@@ -37,15 +37,12 @@ public class LibraryCatalog_MAIN {
         ISBN,
     }
 
-    static List<SearchSortOptions> searchSortEnum = new ArrayList<SearchSortOptions>();
-
     public static void main(String[] args) {
-        System.out.println(searchSortEnum);
 
         Menu mainMenu = new Menu("Library");
         Menu searchMenu = new Menu("Search");
         Menu catalogMenu = new Menu("View Catalog");
-        Menu returnMenu = new Menu("Return Book");
+        Menu returnMenu = new Menu("Material Return");
         Menu helpMenu = new Menu("Help");
 
         Menu borrowMenu = new Menu("Check Out A Book");
@@ -109,12 +106,15 @@ public class LibraryCatalog_MAIN {
             } else {
                 if (chosen == choiceViewCatalog) {
                     catalogMenu.getMenuTitle();
-                    System.out.println("You can sort the books by:");
+                    System.out.println("You can sort the catalog by:");
                     for (SearchSortOptions option : SearchSortOptions.values()) {
                         System.out.println(option.ordinal() + 1 + ") " + option.toString());
                     }
-
+                    
+                    System.out.println("");
                     int input = Helper.numberValidation();
+                    System.out.println("");
+                    
                     if (input == SearchSortOptions.TITLE.ordinal() + 1) {
                         catalog.getBookList().sort(BookNameComparator);
                         catalog.displayBooks();
@@ -132,8 +132,10 @@ public class LibraryCatalog_MAIN {
                     for (SearchSortOptions option : SearchSortOptions.values()) {
                         System.out.println(option.ordinal() + 1 + ") " + option.toString());
                     }
-
+                    
+                    System.out.println("");
                     int input = Helper.numberValidation();
+                    System.out.println("");
 
                     if (input == SearchSortOptions.TITLE.ordinal() + 1) {
                         search.searchByBookTitle(catalog);
@@ -147,9 +149,11 @@ public class LibraryCatalog_MAIN {
                     break;
                 }
                 if (chosen == choiceReturnBook) {
-                    System.out.println("--MATERIAL RETURN--");
-                    System.out.println("-Please enter ISBN of book being returned-");
-
+                    returnMenu.getMenuTitle();
+                    System.out.println("Please enter ISBN of book being returned");
+                    
+                    
+                    break;
                 }
             }
         } while (finished != true);
