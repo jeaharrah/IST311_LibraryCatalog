@@ -6,14 +6,14 @@
  */
 package ist311_librarycatalog;
 
-import static ist311_librarycatalog.Search.bookList;
-import java.util.ArrayList;
-import java.util.List;
+//import static ist311_librarycatalog.Search.bookList;
+//import java.util.ArrayList;
+//import java.util.List;
 import java.util.Scanner;
-import java.util.regex.Pattern;
+//import java.util.regex.Pattern;
 
 /**
- * This class will contain methods that deal with input validation for the user.
+ * This class contains methods that deal with input validation for the user.
  *
  * @author Jennifer A'Harrah <jka5240@psu.edu>
  */
@@ -50,7 +50,7 @@ public class Helper {
     }
 
     /**
-     *
+     * Method uses validateISBN and hyphenateISBN to
      * @return String for validated ISBN with dashes
      */
     public static String inputISBN() {
@@ -69,8 +69,7 @@ public class Helper {
     /**
      *
      * @param string
-     * @return
-     * @returns true for valid ISBN, false for invalid ISBN
+     * @return true for valid ISBN, false for invalid ISBN
      */
     public static boolean validateISBN(String string) {
 
@@ -80,7 +79,7 @@ public class Helper {
             System.out.println("Not a 13 digit ISBN.");
             return false;
         } else if (!string.matches(regex)) {
-            System.out.println("Letters in ISBN.");
+            System.out.println("ERROR: Letters in ISBN.");
             return false;
         } else {
             return true;
@@ -91,6 +90,16 @@ public class Helper {
      *
      * @param string
      * @return
+=======
+    
+     /**
+     * Method for adding hyphens between characters in a string
+     * Gives programmer a way to maintain a consistent data format
+     * for the ISBN-13 codes without having to do a challenging task
+     * of entering them in the correct positions him-/herself.
+     * @param string
+     * @return modified ISBN string with hyphens inserted
+>>>>>>> origin/master
      */
     public static String hyphenateISBN(String string) {
         StringBuilder str = new StringBuilder(string);
@@ -103,7 +112,8 @@ public class Helper {
     }
 
     /**
-     *
+     * Method for retrieving string input from user and ensuring that
+     * the user doesn't entire white space or a blank entry
      * @return the valid inputted string
      */
     public static String inputNonBlankString() {
@@ -127,17 +137,4 @@ public class Helper {
         return input;
     }
 
-    /**
-     *
-     * @param args
-     */
-    public static void main(String[] args) {
-        // Test the numberValidation() and inputNonBlankString() methods
-        // Use a println when calling these to ensure that the return value
-        // is outputted to the screen
-        // (May remove return values in future if we feel they are unnecessary)
-        System.out.println(numberValidation());
-        System.out.println(inputNonBlankString());
-
-    }
 }
