@@ -9,6 +9,10 @@ Allow the users to search for books and show their status (availability).
 If available, allow the user to check the book out.
 Add more features to your application.
 
+# PROJECT USE: 
+The user will enter the through the main class that prompts the user for simple informatio about themselvse. This main class feeds into the user menu which feeds from the menu choice class. When the user inputs a query if the Menu class returns nothing the helper class, does its job by asking the user for input again so that it maybe more accurate. From this menu you are able to choose to see the whole catalog as well. From this the user may want to sort the catalog in alphabetical order by title, or genre, or author. Once the user see's a book that they want. They have the option of checking that book out and then checking that book back in. 
+
+
 # PRODUCT BACKLOG ITEMS ("USER STORIES")	
 1) As a developer, I want classes for objects such as book, catalog, and user, so I can add fields and methods to build the foundations of the library system.	
 
