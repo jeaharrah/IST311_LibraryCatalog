@@ -173,7 +173,7 @@ public class LibraryCatalog_MAIN {
             } else if (chosen == choiceAddBook) {
                 addMenu.getMenuTitle();
                 catalog.addBook();
-                
+
             } else if (chosen == choiceHelp) {
                 helpMenu.getMenuTitle();
                 System.out.println("--INSTRUCTIONS--");

@@ -346,8 +346,6 @@ public class Book implements Comparable<Book> {
             //ascending order
             return bookGenre1.compareTo(bookGenre2);
 
-            //descending order
-            //return bookGenre2.compareTo(bookGenre1);
         }
     };
 
