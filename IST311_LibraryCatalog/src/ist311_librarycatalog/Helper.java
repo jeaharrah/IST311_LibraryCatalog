@@ -71,21 +71,6 @@ public class Helper {
      *
      * @return the valid inputted string
      */
-    public static boolean inputISBN(String string) {
-        
-        String regex = "\\d+";
-        Pattern pattern = Pattern.compile(regex);
-        
-        if (string.length() != 13) {
-            System.out.println("Not 13 digit ISBN.");
-            return false;
-        } else if (!string.matches(regex)) {
-            System.out.println("Letters in ISBN.");
-            return false;
-        } else{
-            return true;
-        }
-    }
 
     public static String inputNonBlankString() {
         Scanner keyboard = new Scanner(System.in);
