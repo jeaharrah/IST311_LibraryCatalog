@@ -6,6 +6,9 @@
  */
 package ist311_librarycatalog;
 
+import static ist311_librarycatalog.Search.bookList;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -15,11 +18,11 @@ import java.util.regex.Pattern;
  * @author Jennifer A'Harrah <jka5240@psu.edu>
  */
 public class Helper {
-
-    // Method that reads user input from the keyboard and continues prompting
-    // the user until a valid number is entered
+    private Book returnedBook = null;
+    
     /**
-     *
+     * Method that reads user input from the keyboard and continues prompting
+     * the user until a valid number is entered
      * @return the valid inputted integer
      */
     public static int numberValidation() {
@@ -64,7 +67,7 @@ public class Helper {
             return true;
         }
     }
-
+    
     public static String hyphenateISBN(String string) {
         StringBuilder str = new StringBuilder(string);
         str.insert(3, "-");
@@ -86,7 +89,6 @@ public class Helper {
         boolean blankString = false;
 
         do {
-//            System.out.print("Enter input: ");
             input = keyboard.nextLine();
 
             if (input.equals("") || input.trim().isEmpty()) {

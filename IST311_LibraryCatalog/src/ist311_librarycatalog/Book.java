@@ -59,23 +59,27 @@ public class Book implements Comparable<Book> {
 
     // Use method overloading in this constructor for creating a book object 
     // with two genres
-    Book(String ISBN, String title, String author, String genre, String genre2) {
+    Book(String ISBN, String title, String author, String genre, String genre2, int numOfBooks) {
         _ISBN = ISBN;
         _title = title;
         _author = author;
         _genre = genre;
         _genre2 = genre2;
+        _numOfBooks = numOfBooks;
+
     }
 
     //Use method overloading in this constructor for creating a book object 
     //with three genres
-    Book(String ISBN, String title, String author, String genre, String genre2, String genre3) {
+    Book(String ISBN, String title, String author, String genre, String genre2, String genre3, int numOfBooks) {
         _ISBN = ISBN;
         _title = title;
         _author = author;
         _genre = genre;
         _genre2 = genre2;
         _genre3 = genre3;
+        _numOfBooks = numOfBooks;
+
     }
 
     /*

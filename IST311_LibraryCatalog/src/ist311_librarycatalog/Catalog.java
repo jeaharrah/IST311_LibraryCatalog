@@ -31,7 +31,8 @@ public class Catalog {
     private Book _book3 = new Book("978-0-34533-970-6", "The Fellowship of the Ring", "Tolkien, J.R.R.", "Fantasy, Adventure", 3);
     private Book _book4 = new Book("978-0-48628-211-4", "Frankenstein", "Shelley, Mary", "Fiction, Gothic Fiction, Science Fiction", 5);
     private Book _book5 = new Book("978-0-06207-348-8", "And Then There Were None", "Christie, Agatha", "Mystery", 4);
-    private Book _book6 = new Book("111-1-11111-111-1", "a", "a, a", "a", 1); // test debug
+    private Book _book6 = new Book("978-1-11840-803-2", "Java All-in-One for Dummies", "Lowe, Doug", "Informational", "Computer Science", 1); // test debug
+    private Book _book7 = new Book("978-0-44100-576-5", "Mossflower: Prequel to Redwall", "Jacques, Brian", "Fiction", "Adventure", 2); // test debug
 
     // Create an arraylist that stores Book objects
     // Add each book to the arraylist
@@ -43,6 +44,7 @@ public class Catalog {
             add(_book4);
             add(_book5);
             add(_book6);
+            add(_book7);
         }
     };
 

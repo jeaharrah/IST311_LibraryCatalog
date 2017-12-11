@@ -126,6 +126,7 @@ public class LibraryCatalog_MAIN {
                         catalog.getBookList().sort(BookISBNComparator);
                     }
                 }
+                
                 if (chosen == choiceSearch) {
                     searchMenu.getMenuTitle();
                     System.out.println("You can search by:");

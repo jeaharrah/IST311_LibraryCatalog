@@ -20,18 +20,12 @@ public class Search {
     private Book foundBook = null;
 
     public static void main(String[] args) {
-        boolean finished = false;
-        int choice = 0;
 
         search.searchByBookTitle(catalog);
         search.searchByGenre(catalog);
         search.searchByISBN(catalog);
         search.searchByAuthor(catalog);
-//       while(!finished){
-//           if(choice == 1){
-//               search.searchByBookTitle(catalog);
-//           }
-//       }
+
     }
 
     public Book displaySearchResults(List<Book> bookList) {
@@ -85,7 +79,7 @@ public class Search {
         } else {
             System.out.println("No books found containing the keyword \"" + input + "\" in the title.");
         }
-
+        
         return foundBook;
     }
 
@@ -119,13 +113,10 @@ public class Search {
     public Book searchByISBN(Catalog catalog) {
         List<Book> searchedBooks = new ArrayList<>();
         System.out.println("--SEARCH BY ISBN-13--");
-        System.out.println("NOTE: Enter ISBN-13 code up to 13 digits with no dashes.");
+        System.out.println("NOTE: Enter ISBN-13 code up to 13 digits with NO dashes.");
         System.out.print("Search by ISBN: ");
         input = Helper.inputNonBlankString();
 
-//        while (Helper.inputISBN(input) == false) {    
-//            searchByISBN(catalog);
-//        }
         for (int i = 0; i < bookList.size(); i++) {
             if (catalog.getBookList().get(i).getISBN().toLowerCase().contains(input.toLowerCase())) {
                 searchedBooks.add(bookList.get(i));
