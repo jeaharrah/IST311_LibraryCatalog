@@ -30,6 +30,8 @@ public class Book implements Comparable<Book> {
     private String _genre3;
     private boolean _borrowed;
     private int _numOfBooks;
+//    private Helper helper = new Helper();
+    public Scanner keyboard = new Scanner(System.in);
 
     // Constructors for easily creating new book objects
     // Constructor for book object with one genre
@@ -182,6 +184,8 @@ public class Book implements Comparable<Book> {
     }
 
     //=================METHODS==============
+
+
     /**
      * Will mark a book as borrowed
      */
@@ -298,9 +302,7 @@ public class Book implements Comparable<Book> {
         Search search = new Search();
         List<Book> books = new ArrayList<>(catalog.getBookList());
 
-
         // test case of book sorting by name
-        
         catalog.displayBooks();
         catalog.getBookList().sort(BookNameComparator);
 //        catalog.getBookList().sort(BookISBNComparator);
@@ -309,7 +311,10 @@ public class Book implements Comparable<Book> {
 
         System.out.println("==================After sort==================");
         catalog.displayBooks();
-
         
+        catalog.addBook();
+        
+        catalog.displayBooks();
+
     }
 }
