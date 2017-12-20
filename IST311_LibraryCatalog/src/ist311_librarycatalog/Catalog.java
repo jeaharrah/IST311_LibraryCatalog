@@ -17,6 +17,14 @@ import java.util.List;
  */
 public class Catalog {
 
+    public static void main(String[] args) {
+        Book _book1 = new Book("978-0-44845-714-7", "The Little Engine That Could", "Piper, Watty", "Children's Literature", 5);
+
+        System.out.println(_book1.getNumOfBooks());
+        _book1.borrowBook();
+        System.out.println(_book1.getNumOfBooks());
+    }
+
     /**
      *
      * @returns a List<Book>
@@ -28,8 +36,8 @@ public class Catalog {
     // Instantiate some private book objects
     private Book _book1 = new Book("978-0-44845-714-7", "The Little Engine That Could", "Piper, Watty", "Children's Literature", 5);
     private Book _book2 = new Book("978-1-41699-644-6", "Sent", "Haddix, Margaret Peterson", "Historical Fiction", 6);
-    private Book _book3 = new Book("978-0-34533-970-6", "The Fellowship of the Ring", "Tolkien, J.R.R.", "Fantasy, Adventure", 3);
-    private Book _book4 = new Book("978-0-48628-211-4", "Frankenstein", "Shelley, Mary", "Fiction, Gothic Fiction, Science Fiction", 5);
+    private Book _book3 = new Book("978-0-34533-970-6", "The Fellowship of the Ring", "Tolkien, J.R.R.", "Fantasy", "Adventure", 3);
+    private Book _book4 = new Book("978-0-48628-211-4", "Frankenstein", "Shelley, Mary", "Fiction", "Gothic Fiction", "Science Fiction", 5);
     private Book _book5 = new Book("978-0-06207-348-8", "And Then There Were None", "Christie, Agatha", "Mystery", 4);
     private Book _book6 = new Book("978-1-11840-803-2", "Java All-in-One for Dummies", "Lowe, Doug", "Informational", "Computer Science", 1); // test debug
     private Book _book7 = new Book("978-0-44100-576-5", "Mossflower: Prequel to Redwall", "Jacques, Brian", "Fiction", "Adventure", 2); // test debug
@@ -65,12 +73,12 @@ public class Catalog {
             System.out.println("Title: " + book.getTitle());
             System.out.println("Author: " + book.getAuthor());
             System.out.println("Genre: " + book.getGenre());
-//            if (book.getGenre2() != null) {
-//                System.out.println("Genre 2: " + book.getGenre2());
-//            }
-//            if (book.getGenre3() != null) {
-//                System.out.println("Genre 3: " + book.getGenre3());
-//            }
+            if (book.getGenre2() != null) {
+                System.out.println("Genre 2: " + book.getGenre2());
+            }
+            if (book.getGenre3() != null) {
+                System.out.println("Genre 3: " + book.getGenre3());
+            }
             System.out.println("ISBN-13: " + book.getISBN());
             System.out.println("Number of copies left: " + book.getNumOfBooks());
             System.out.println("------------");
@@ -133,6 +141,5 @@ public class Catalog {
             System.out.println("Book has been added to the catalog!");
         }
     }
-
 
 }

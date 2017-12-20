@@ -13,23 +13,27 @@ public class Search {
 
 //    Book book = new Book();
     //Scanner in = new Scanner(System.in);
+    /**
+     *
+     */
+    private static final Catalog CATALOG = new Catalog();
 
     /**
      *
      */
-    public static Catalog catalog = new Catalog();
+    public static Search SEARCH = new Search();
 
     /**
      *
      */
-    public static Search search = new Search();
-
-    /**
-     *
-     */
-    public static List<Book> bookList = catalog.getBookList();
+    public static List<Book> bookList = CATALOG.getBookList();
     private String input;
     private Book foundBook = null;
+
+    private final List<Book> titleSearchResults = new ArrayList<>();
+    private final List<Book> authorSearchResults = new ArrayList<>();
+    private final List<Book> genreSearchResults = new ArrayList<>();
+    private final List<Book> isbnSearchResults = new ArrayList<>();
 
     /**
      *
@@ -75,30 +79,30 @@ public class Search {
      * @param catalog
      * @return a book found through Book title
      */
-    public Book searchByBookTitle(Catalog catalog) {
-        List<Book> searchedBooks = new ArrayList<>();
+    public List<Book> searchByBookTitle(Catalog catalog) {
         System.out.print("Search by book title: ");
         input = Helper.inputNonBlankString();
+
         for (int i = 0; i < bookList.size(); i++) {
             if (catalog.getBookList().get(i).getTitle().toLowerCase().contains(input.toLowerCase())) {
-                searchedBooks.add(bookList.get(i));
+                titleSearchResults.add(bookList.get(i));
             }
         }
-        if (searchedBooks.size() != 0) {
+
+        if (titleSearchResults.size() != 0) {
             int i = 1;
-            System.out.println(searchedBooks.size() + " book(s) found containing the keyword \"" + input + "\" in the title.");
-            for (Book book : searchedBooks) {
-                foundBook = book;
+            System.out.println(titleSearchResults.size() + " book(s) found containing the keyword \"" + input + "\" in the title.");
+            for (Book book : titleSearchResults) {
                 System.out.print(i + ") ");
                 System.out.println(book.getTitle());
                 i++;
             }
-            chooseResult(searchedBooks);
         } else {
             System.out.println("No books found containing the keyword \"" + input + "\" in the title.");
         }
 
-        return foundBook;
+        return titleSearchResults;
+
     }
 
     /**
@@ -106,32 +110,29 @@ public class Search {
      * @param catalog
      * @return a Book found through author
      */
-    public Book searchByAuthor(Catalog catalog) {
+    public List<Book> searchByAuthor(Catalog catalog) {
         System.out.println("--SEARCH BY AUTHOR--");
-        List<Book> searchedBooks = new ArrayList<>();
         System.out.print("Search by author: ");
         input = Helper.inputNonBlankString();
 
         for (int i = 0; i < bookList.size(); i++) {
             if (catalog.getBookList().get(i).getAuthor().toLowerCase().contains(input.toLowerCase())) {
-                searchedBooks.add(bookList.get(i));
+                authorSearchResults.add(bookList.get(i));
             }
         }
         int i = 1;
-        if (!searchedBooks.isEmpty()) {
-            System.out.println(searchedBooks.size() + " book(s) found containing the keyword \"" + input + "\" in the author.");
-            for (Book book : searchedBooks) {
-                foundBook = book;
+        if (!authorSearchResults.isEmpty()) {
+            System.out.println(authorSearchResults.size() + " book(s) found containing the keyword \"" + input + "\" in the author.");
+            for (Book book : authorSearchResults) {
                 System.out.print(i + ") ");
                 System.out.println(book.getAuthor());
                 i++;
             }
-            chooseResult(searchedBooks);
 
         } else {
             System.out.println("No books found containing the keyword \"" + input + "\" in the author.");
         }
-        return foundBook;
+        return authorSearchResults;
 
     }
 
@@ -140,8 +141,7 @@ public class Search {
      * @param catalog
      * @return a book found through ISBN
      */
-    public Book searchByISBN(Catalog catalog) {
-        List<Book> searchedBooks = new ArrayList<>();
+    public List<Book> searchByISBN(Catalog catalog) {
         System.out.println("--SEARCH BY ISBN-13--");
         System.out.println("NOTE: Enter ISBN-13 code up to 13 digits with NO dashes.");
         System.out.println("Search by ISBN. ");
@@ -149,25 +149,24 @@ public class Search {
 
         for (int i = 0; i < bookList.size(); i++) {
             if (catalog.getBookList().get(i).getISBN().toLowerCase().contains(input.toLowerCase())) {
-                searchedBooks.add(bookList.get(i));
+                isbnSearchResults.add(bookList.get(i));
             }
         }
-        if (!searchedBooks.isEmpty()) {
+        if (!isbnSearchResults.isEmpty()) {
             int i = 1;
-            System.out.println(searchedBooks.size() + " book(s) found with an ISBN-13 code matching " + input + ".");
-            for (Book book : searchedBooks) {
+            System.out.println(isbnSearchResults.size() + " book(s) found with an ISBN-13 code matching " + input + ".");
+            for (Book book : isbnSearchResults) {
                 System.out.print(i + ") ");
                 System.out.println(book.getTitle());
                 System.out.println(book.getAuthor());
                 System.out.println(book.getISBN());
                 i++;
             }
-            chooseResult(searchedBooks);
 
         } else {
             System.out.println("No books found with an ISBN-13 code matching " + input + ".");
         }
-        return foundBook;
+        return isbnSearchResults;
     }
 
     /**
@@ -175,9 +174,8 @@ public class Search {
      * @param catalog
      * @return a Book found through genre
      */
-    public Book searchByGenre(Catalog catalog) {
+    public List<Book> searchByGenre(Catalog catalog) {
         System.out.println("--SEARCH BY GENRE--");
-        List<Book> searchedBooks = new ArrayList<>();
         System.out.print("Search by genre: ");
         input = Helper.inputNonBlankString();
 
@@ -185,14 +183,14 @@ public class Search {
             if (catalog.getBookList().get(i).getGenre().toLowerCase().contains(input.toLowerCase())
                     || (catalog.getBookList().get(i).getGenre2() != null && catalog.getBookList().get(i).getGenre2().toLowerCase().contains(input.toLowerCase()))
                     || (catalog.getBookList().get(i).getGenre3() != null && catalog.getBookList().get(i).getGenre3().toLowerCase().contains(input.toLowerCase()))) {
-                searchedBooks.add(bookList.get(i));
+                genreSearchResults.add(bookList.get(i));
             }
         }
 
-        if (!searchedBooks.isEmpty()) {
-            System.out.println(searchedBooks.size() + " book(s) found containing the keyword \"" + input + "\" in the genre.");
+        if (!genreSearchResults.isEmpty()) {
+            System.out.println(genreSearchResults.size() + " book(s) found containing the keyword \"" + input + "\" in the genre.");
             int i = 1;
-            for (Book book : searchedBooks) {
+            for (Book book : genreSearchResults) {
                 System.out.print(i + ") ");
                 System.out.println(book.getTitle());
                 System.out.println(book.getAuthor());
@@ -205,12 +203,11 @@ public class Search {
                 }
                 i++;
             }
-            chooseResult(searchedBooks);
 
         } else {
             System.out.println("No books found containing the keyword \"" + input + "\" in the genre.");
         }
 
-        return foundBook;
+        return genreSearchResults;
     }
 }

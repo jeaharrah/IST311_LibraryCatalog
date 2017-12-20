@@ -20,6 +20,12 @@ import java.util.Scanner;
  * @author Jennifer A'Harrah <jka5240@psu.edu>
  */
 public class Book implements Comparable<Book> {
+    private static final Catalog CATALOG = new Catalog();
+    
+    public static void main(String[] args) {
+        
+    }
+    
 
     // Declare private fields needed when creating a book object
     private String _ISBN;
@@ -199,14 +205,15 @@ public class Book implements Comparable<Book> {
 
     /**
      *
-     * @param _numOfBooks
+     * @param numOfBooks
      */
-    public void setNumOfBooks(int _numOfBooks) {
-        this._numOfBooks = _numOfBooks;
+    public void setNumOfBooks(int numOfBooks) {
+        this._numOfBooks = numOfBooks;
     }
 
     //=================METHODS==============
     public void printBook() {
+        System.out.println("");
         System.out.println("Book title: " + getTitle());
         System.out.println("Author: " + getAuthor());
         System.out.println("Book ISBN: " + getISBN());
@@ -218,6 +225,8 @@ public class Book implements Comparable<Book> {
             System.out.println("Book genre 3: " + getGenre3());
         }
         System.out.println("Borrow status: " + displayBorrowStatus());
+        System.out.println("Remaining # of copies: " + this._numOfBooks);
+        
     }
 
     /**
@@ -227,21 +236,18 @@ public class Book implements Comparable<Book> {
      * @return Will check if book is borrowed
      *
      */
-    public boolean borrowBook() {
-        if (this._availability == false) { // no copies left
-            displayBorrowStatus();
-            return true;
-        } else { // book is NOT completely borrowed
-            displayBorrowStatus();
-            this._numOfBooks--; // decrements remaining copies 
-            if (this._numOfBooks == 0) { //checks if there are copies of books left
-                this._availability = false;  // sets to borrowed if NO books are left
-            } else if (this._numOfBooks > 0) { // otherwise
-                this._booksBorrowed++; // increments user's copies of books
+    public void borrowBook() {
+        displayBorrowStatus();
 
-            }
-            return false;
+        if (this._numOfBooks == 0) { //checks if there are copies of books left
+            this._availability = false;  // sets to borrowed if NO books are left
+        } else if (this._numOfBooks > 0) { // otherwise
+            this._booksBorrowed += 1; // increments user's copies of books
+            this._numOfBooks -= 1;
+            //this.setNumOfBooks(this._numOfBooks - 1);
         }
+        System.out.println("Number of remaining copies available: " + this._numOfBooks);
+
     }
 
     /**

@@ -35,7 +35,7 @@ public class LibraryCatalog_MAIN {
     /**
      * List object that stores the Book objects from the getBookList() ArrayList
      */
-    public static List<Book> bookList = catalog.getBookList();
+    private final static List<Book> BOOK_LIST = catalog.getBookList();
 
     enum SearchSortOptions {
         TITLE,
@@ -83,6 +83,9 @@ public class LibraryCatalog_MAIN {
                 // Else-if block for user wanting to view catalog
             } else if (chosen == choiceViewCatalog) {
                 catalogMenu.getMenuTitle();
+
+                catalog.displayBooks();
+                System.out.println(catalog.getBookList());
 
                 System.out.println("You can sort the catalog by:");
                 for (SearchSortOptions option : SearchSortOptions.values()) {
@@ -135,13 +138,24 @@ public class LibraryCatalog_MAIN {
                 System.out.println("");
 
                 if (input == SearchSortOptions.TITLE.ordinal() + 1) {
-                    search.searchByBookTitle(catalog);
+                    List<Book> titleResults = search.searchByBookTitle(catalog);
+                    Book found = search.chooseResult(titleResults);
+                    found.borrowBook();
+                    found.printBook();
+
                 } else if (input == SearchSortOptions.AUTHOR.ordinal() + 1) {
-                    search.searchByAuthor(catalog);
+                    List<Book> authorResults = search.searchByAuthor(catalog);
+                    Book found = search.chooseResult(authorResults);
+                    found.borrowBook();
                 } else if (input == SearchSortOptions.GENRE.ordinal() + 1) {
-                    search.searchByGenre(catalog);
+                    List<Book> genreResults = search.searchByGenre(catalog);
+                    Book found = search.chooseResult(genreResults);
+                    found.borrowBook();
                 } else if (input == SearchSortOptions.ISBN.ordinal() + 1) {
-                    search.searchByISBN(catalog);
+                    List<Book> isbnResults = search.searchByISBN(catalog);
+                    Book found = search.chooseResult(isbnResults);
+                    found.borrowBook();
+                    found.printBook();
                 } else if (input == SearchSortOptions.values().length + 1) {
                     System.out.println("Redirecting you to main menu...");
                 }
