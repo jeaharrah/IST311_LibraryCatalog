@@ -40,12 +40,11 @@ public class Search {
      * @param bookList
      * @return
      */
-    public Book displaySearchResults(List<Book> bookList) {
+    public void displaySearchResults(List<Book> bookList) {
         for (Book book : bookList) {
             foundBook = book;
             System.out.println(book);
         }
-        return foundBook;
     }
 
     /**
