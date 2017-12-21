@@ -19,10 +19,32 @@ public class Catalog {
 
     public static void main(String[] args) {
         Book _book1 = new Book("978-0-44845-714-7", "The Little Engine That Could", "Piper, Watty", "Children's Literature", 5);
-
+        
         System.out.println(_book1.getNumOfBooks());
         _book1.borrowBook();
         System.out.println(_book1.getNumOfBooks());
+
+        Book _book2 = new Book("978-1-41699-644-6", "Sent", "Haddix, Margaret Peterson", "Historical Fiction", 6);
+        Book _book3 = new Book("978-0-34533-970-6", "The Fellowship of the Ring", "Tolkien, J.R.R.", "Fantasy", "Adventure", 3);
+        Book _book4 = new Book("978-0-48628-211-4", "Frankenstein", "Shelley, Mary", "Fiction", "Gothic Fiction", "Science Fiction", 5);
+        Book _book5 = new Book("978-0-06207-348-8", "And Then There Were None", "Christie, Agatha", "Mystery", 4);
+        Book _book6 = new Book("978-1-11840-803-2", "Java All-in-One for Dummies", "Lowe, Doug", "Informational", "Computer Science", 1); // test debug
+        Book _book7 = new Book("978-0-44100-576-5", "Mossflower: Prequel to Redwall", "Jacques, Brian", "Fiction", "Adventure", 2); // test debug
+        
+        List<Book> bookList = new ArrayList<Book>();
+        bookList.add(_book1);
+        bookList.add(_book2);
+        bookList.add(_book3);
+        bookList.add(_book4);
+        bookList.add(_book5);
+        bookList.add(_book6);
+        bookList.add(_book7);
+        
+        Catalog.displayBooks(bookList);
+        _book2.borrowBook();
+        Catalog.displayBooks(bookList);
+        
+
     }
 
     /**
@@ -31,6 +53,7 @@ public class Catalog {
      */
     public List<Book> getBookList() {
         return books;
+
     }
 
     // Instantiate some private book objects
@@ -63,13 +86,13 @@ public class Catalog {
      *
      * @author Jennifer A'Harrah <jka5240@psu.edu>
      */
-    public void displayBooks() {
+    public static void displayBooks(List<Book> bookList) {
         System.out.println("");
         System.out.println("------BOOK CATALOG------");
-        System.out.println("Number of books: [" + books.size() + "]");
+        System.out.println("Number of books: [" + bookList.size() + "]");
         System.out.println("");
 
-        for (Book book : books) {
+        for (Book book : bookList) {
             System.out.println("Title: " + book.getTitle());
             System.out.println("Author: " + book.getAuthor());
             System.out.println("Genre: " + book.getGenre());

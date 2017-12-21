@@ -68,7 +68,6 @@ public class Search {
         Book book = searchedBooks.get(choice - 1);
 
         System.out.println("You chose this book:");
-        book.printBook();
 
         return book;
     }

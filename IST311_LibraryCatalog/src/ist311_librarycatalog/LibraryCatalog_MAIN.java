@@ -84,7 +84,7 @@ public class LibraryCatalog_MAIN {
             } else if (chosen == choiceViewCatalog) {
                 catalogMenu.getMenuTitle();
 
-                catalog.displayBooks();
+                Catalog.displayBooks(BOOK_LIST);
                 System.out.println(catalog.getBookList());
 
                 System.out.println("You can sort the catalog by:");
@@ -103,16 +103,16 @@ public class LibraryCatalog_MAIN {
 
                 if (input == SearchSortOptions.TITLE.ordinal() + 1) {
                     catalog.getBookList().sort(BookNameComparator);
-                    catalog.displayBooks();
+                    Catalog.displayBooks(BOOK_LIST);
                 } else if (input == SearchSortOptions.AUTHOR.ordinal() + 1) {
                     catalog.getBookList().sort(BookAuthorComparator);
-                    catalog.displayBooks();
+                    Catalog.displayBooks(BOOK_LIST);
                 } else if (input == SearchSortOptions.GENRE.ordinal() + 1) {
                     catalog.getBookList().sort(BookGenreComparator);
-                    catalog.displayBooks();
+                    Catalog.displayBooks(BOOK_LIST);
                 } else if (input == SearchSortOptions.ISBN.ordinal() + 1) {
                     catalog.getBookList().sort(BookISBNComparator);
-                    catalog.displayBooks();
+                    Catalog.displayBooks(BOOK_LIST);
                 } else if (input == SearchSortOptions.values().length + 1) {
                     System.out.println("Redirecting you to main menu...");
                     System.out.println("");
@@ -175,7 +175,6 @@ public class LibraryCatalog_MAIN {
                     if (catalog.getBookList().get(i).getISBN().toLowerCase().equals(returnISBN.toLowerCase())) {
                         catalog.getBookList().get(i).returnBook();
                         found = true;
-                        returnMenu.getMenuTitle();
                     }
 
                 }

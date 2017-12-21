@@ -214,6 +214,7 @@ public class Book implements Comparable<Book> {
     //=================METHODS==============
     public void printBook() {
         System.out.println("");
+        System.out.println("Borrow status: " + displayBorrowStatus());
         System.out.println("Book title: " + getTitle());
         System.out.println("Author: " + getAuthor());
         System.out.println("Book ISBN: " + getISBN());
@@ -224,7 +225,6 @@ public class Book implements Comparable<Book> {
         if (getGenre3() != null) {
             System.out.println("Book genre 3: " + getGenre3());
         }
-        System.out.println("Borrow status: " + displayBorrowStatus());
         System.out.println("Remaining # of copies: " + this._numOfBooks);
         
     }
