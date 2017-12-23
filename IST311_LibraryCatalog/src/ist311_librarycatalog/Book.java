@@ -225,7 +225,7 @@ public class Book implements Comparable<Book> {
         if (getGenre3() != null) {
             System.out.println("Book genre 3: " + getGenre3());
         }
-        System.out.println("Remaining # of copies: " + this._numOfBooks);
+        //System.out.println("Remaining # of copies: " + this._numOfBooks);
         
     }
 
@@ -244,7 +244,6 @@ public class Book implements Comparable<Book> {
         } else if (this._numOfBooks > 0) { // otherwise
             this._booksBorrowed += 1; // increments user's copies of books
             this._numOfBooks -= 1;
-            //this.setNumOfBooks(this._numOfBooks - 1);
         }
         System.out.println("Number of remaining copies available: " + this._numOfBooks);
 

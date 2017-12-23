@@ -120,10 +120,10 @@ public class Catalog {
     public boolean isCopy(Book newBook) {
 
         for (int i = 0; i < books.size(); i++) {
-            if (newBook.getTitle().equals(books.get(i).getTitle())
-                    && newBook.getAuthor().equals(books.get(i).getAuthor())
-                    && newBook.getISBN().equals(books.get(i).getISBN())
-                    && newBook.getGenre().equals(books.get(i).getGenre())) {
+            if (newBook.getTitle().equalsIgnoreCase(books.get(i).getTitle())
+                    && newBook.getAuthor().equalsIgnoreCase(books.get(i).getAuthor())
+                    && newBook.getISBN().equalsIgnoreCase(books.get(i).getISBN())
+                    && newBook.getGenre().equalsIgnoreCase(books.get(i).getGenre())) {
 
                 books.get(i).setNumOfBooks(books.get(i).getNumOfBooks() + 1);
                 // increments number fo copies by 1

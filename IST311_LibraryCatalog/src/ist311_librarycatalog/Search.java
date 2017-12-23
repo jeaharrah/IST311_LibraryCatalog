@@ -68,6 +68,7 @@ public class Search {
         Book book = searchedBooks.get(choice - 1);
 
         System.out.println("You chose this book:");
+        book.printBook();
 
         return book;
     }
@@ -93,6 +94,9 @@ public class Search {
             for (Book book : titleSearchResults) {
                 System.out.print(i + ") ");
                 System.out.println(book.getTitle());
+                System.out.println(book.getAuthor());
+                System.out.println("Number of available copies: " + book.getNumOfBooks());
+                System.out.println(book.displayBorrowStatus());
                 i++;
             }
         } else {
@@ -124,6 +128,9 @@ public class Search {
             for (Book book : authorSearchResults) {
                 System.out.print(i + ") ");
                 System.out.println(book.getAuthor());
+                System.out.println(book.getTitle());
+                System.out.println("Number of available copies: " + book.getNumOfBooks());
+                System.out.println(book.displayBorrowStatus());
                 i++;
             }
 
@@ -158,6 +165,8 @@ public class Search {
                 System.out.println(book.getTitle());
                 System.out.println(book.getAuthor());
                 System.out.println(book.getISBN());
+                System.out.println("Number of available copies: " + book.getNumOfBooks());
+                System.out.println(book.displayBorrowStatus());
                 i++;
             }
 
@@ -199,6 +208,8 @@ public class Search {
                 if (book.getGenre3() != null) {
                     System.out.println(book.getGenre3());
                 }
+                System.out.println("Number of available copies: " + book.getNumOfBooks());
+                System.out.println(book.displayBorrowStatus());
                 i++;
             }
 

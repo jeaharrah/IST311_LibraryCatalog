@@ -141,21 +141,22 @@ public class LibraryCatalog_MAIN {
                     List<Book> titleResults = search.searchByBookTitle(catalog);
                     Book found = search.chooseResult(titleResults);
                     found.borrowBook();
-                    found.printBook();
 
                 } else if (input == SearchSortOptions.AUTHOR.ordinal() + 1) {
                     List<Book> authorResults = search.searchByAuthor(catalog);
                     Book found = search.chooseResult(authorResults);
                     found.borrowBook();
+
                 } else if (input == SearchSortOptions.GENRE.ordinal() + 1) {
                     List<Book> genreResults = search.searchByGenre(catalog);
                     Book found = search.chooseResult(genreResults);
                     found.borrowBook();
+
                 } else if (input == SearchSortOptions.ISBN.ordinal() + 1) {
                     List<Book> isbnResults = search.searchByISBN(catalog);
                     Book found = search.chooseResult(isbnResults);
                     found.borrowBook();
-                    found.printBook();
+
                 } else if (input == SearchSortOptions.values().length + 1) {
                     System.out.println("Redirecting you to main menu...");
                 }
