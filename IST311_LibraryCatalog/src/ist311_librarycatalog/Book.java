@@ -253,7 +253,7 @@ public class Book implements Comparable<Book> {
      * Will mark a book as returned
      */
     public void returnBook() {
-        if (this._booksBorrowed > 0) { // if books borrowed is not 0, you will returna  book
+        if (this._booksBorrowed > 0) { // if books borrowed is not 0, you will return a  book
             System.out.println("You have returned a book.");
             this._booksBorrowed--; // decrements user's books
             this._numOfBooks++; // returns a book to library
