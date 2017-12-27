@@ -160,7 +160,7 @@ public class Catalog {
             System.out.println("Book already exists, adding a copy...");
         } else {
             newBook.setNumOfBooks(1); // adds one copy of the new book
-            getBookList().add(newBook);
+            books.add(newBook);
             System.out.println("Book has been added to the catalog!");
         }
     }
